@@ -69,16 +69,6 @@ public class FullCalendarView {
             dayLabels.add(ap, col++, 0);
         }
         // Create calendarTitle and buttons to change current month
-        final ComboBox emailComboBox = new ComboBox();
-        emailComboBox.setPromptText("Subject:");
-        DatePicker datePicker = new DatePicker();
-        emailComboBox.getItems().addAll(
-                "OOAD",
-                "SE",
-                "Network",
-                "Com ar",
-                "TOC"
-        );//dropdown and datePick
 
         calendarTitle = new Text();
 

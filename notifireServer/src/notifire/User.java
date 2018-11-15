@@ -29,11 +29,6 @@ public abstract class User implements Serializable {
 
     public boolean checkPassword(String pass) throws IOException {
         if (pass.equals(this.password)) {
-            Client client = new Client("127.0.0.1", 7777);//test mail
-            String head = "you've login @ " + LocalDate.now();
-            String message = "hi " + this.name + "you've login at " + LocalDate.now() + "if it's not you, Good Luck.";
-            client.toServer(new EmailRequest(this.email, head, message, LocalDate.now() ));
-            client.disconnect();
             return true;
         }
         return false;

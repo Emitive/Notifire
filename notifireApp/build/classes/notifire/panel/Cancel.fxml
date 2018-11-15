@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TextArea?>
@@ -7,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.CancelController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.CancelController">
    <children>
       <Button layoutX="900.0" layoutY="500.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="64.0" text="OK" />
       <Text layoutX="50.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cancel" wrappingWidth="116.609375">
@@ -15,7 +19,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextArea fx:id="text" layoutX="60.0" layoutY="190.0" prefHeight="200.0" prefWidth="200.0" />
-      <ChoiceBox fx:id="sub" layoutX="50.0" layoutY="105.0" prefWidth="150.0" />
+      <DatePicker fx:id="dp" layoutX="478.0" layoutY="269.0" />
+      <ComboBox fx:id="sub" layoutX="247.0" layoutY="269.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

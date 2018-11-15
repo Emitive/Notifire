@@ -3,7 +3,9 @@ package notifire;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Data implements Serializable { // We create/access everything here. save this as a whole single object.
@@ -13,6 +15,7 @@ public class Data implements Serializable { // We create/access everything here.
     private HashMap<Integer, Course> course = new HashMap<>();
     private HashMap<Integer, Curriculum> cr = new HashMap<>();
     private static final String fileName = "data";
+
     private Data() {
     }
 
@@ -20,13 +23,14 @@ public class Data implements Serializable { // We create/access everything here.
         if (data == null) {
             IO io = new IO();
             if (!io.exist(fileName)) {
-                io.save(fileName,new Data());
+                io.save(fileName, new Data());
             }
             data = (Data) io.load(fileName);
         }
         return data;
     }
-    public void saveData() throws IOException{
+
+    public void saveData() throws IOException {
         IO io = new IO();
         io.save(fileName, data);
     }
@@ -44,12 +48,12 @@ public class Data implements Serializable { // We create/access everything here.
 
     public boolean addTeacher(int id, String pass, String name, String email) {
         if (user.containsKey(id)) {
-             System.out.println("teacher exist" + id);
+            System.out.println("teacher exist" + id);
             return false;
         }
         Teacher t = new Teacher(id, pass, name, email);
         user.put(id, t);
-         System.out.println("teacher added" + id + name);
+        System.out.println("teacher added" + id + name);
         return true;
     }
 
@@ -82,6 +86,15 @@ public class Data implements Serializable { // We create/access everything here.
 
     public Curriculum getCurriculum(int id) {
         return cr.get(id);
+    }
+
+    public void sendMail(int courseId, String head, String message, LocalDate date) throws IOException, ClassNotFoundException {
+        Client client = new Client("127.0.0.1", 5001);
+        ArrayList<EmailRequest> aList = new ArrayList<>();
+        HashMap<Integer, User> map = data.getCourse(courseId).getMember();
+        map.forEach((k, v) -> aList.add(new EmailRequest(v.getEmail(), head, message, date)));
+        client.toServer(aList);
+        client.disconnect();
     }
 
 }

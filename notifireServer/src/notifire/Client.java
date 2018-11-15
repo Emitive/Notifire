@@ -40,8 +40,9 @@ public class Client {
         return in.readObject();
     }
 
-    public void disconnect() {
+    public void disconnect() throws ClassNotFoundException {
         try {
+            fromServer();
             toServer("Over");
             in.close();
             out.close();

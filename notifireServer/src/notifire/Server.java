@@ -33,7 +33,9 @@ public class Server {
     }
 
     public Object fromClient() throws IOException, ClassNotFoundException {
-        return in.readObject();
+        Object o = in.readObject();
+        System.out.println(o);
+        return o;
     }
 
     public void disconnect() throws IOException {

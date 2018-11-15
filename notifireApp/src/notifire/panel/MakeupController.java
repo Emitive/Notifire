@@ -48,7 +48,7 @@ public class MakeupController implements Initializable {
         String[] part = sub.getSelectionModel().getSelectedItem().split("-");
         int courseId = Integer.parseInt(part[0]);
         System.out.println(courseId);
-        String[] times = time.getText().split("");
+        String[] times = time.getText().split(":");
         int hour = Integer.parseInt(times[0]);
         int minute = Integer.parseInt(times[1]);
         Teacher t = (Teacher)ThisUser.getUser();
@@ -64,7 +64,7 @@ public class MakeupController implements Initializable {
        list.removeAll(list);
         HashMap<Integer,Course> map = ThisUser.getUser().getCourse();
         
-        map.forEach((k,v)->list.addAll(v.getName()));
+        map.forEach((k,v)->list.addAll(v.getId() +"-"+ v.getName()));
         sub.getItems().addAll(list);
     }
     private void linkTo(String s) throws IOException {

@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import notifire.ThisUser;
 
 /**
  * Create an anchor pane that can store additional data.
@@ -27,7 +28,7 @@ public class AnchorPaneNode extends AnchorPane {
     public AnchorPaneNode(Node... children) {
         super(children);
         // Add action handler for mouse clicked
-        this.setOnMouseClicked(e -> System.out.println("This pane's date is: " + date));
+        this.setOnMouseClicked(e -> ThisUser.setDate(this.date));
     }
     
     

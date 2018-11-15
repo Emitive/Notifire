@@ -43,8 +43,10 @@ public class HomeController implements Initializable {
     @FXML private Button anc;
     @FXML private Button task;
     @FXML private Button makeUp;
-    @FXML private Button cancle;
+    @FXML private Button temp;
     @FXML private Button join;
+    
+    @FXML private Text selected;
     @FXML private Text date;
     @FXML private Text name;
     @FXML private void task() {
@@ -55,7 +57,7 @@ public class HomeController implements Initializable {
          linkTo("Makeup");
     }
     @FXML
-    private void cancle()throws IOException {
+    private void cancel()throws IOException {
         linkTo("Cancel");
     }
     @FXML
@@ -73,7 +75,10 @@ public class HomeController implements Initializable {
         linkTo("Announce");
         
     }
-    
+    @FXML private void selectDate(){
+        selected.setText(ThisUser.date().toString());
+        
+    }
     
     @FXML
     private void addTask() throws IOException {
@@ -89,6 +94,10 @@ public class HomeController implements Initializable {
         pane.getChildren().addAll(n);
         pane.autosize();
         name.setText(ThisUser.getUser().getName());
+        if(ThisUser.type().equals("Student")){
+            temp.setVisible(false);
+        }
+        
         
     }
 

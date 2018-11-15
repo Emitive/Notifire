@@ -3,6 +3,7 @@ package notifire;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class NotifireServer {
@@ -13,15 +14,29 @@ public class NotifireServer {
         data.addTeacher(1, "onepunch", "saitama", "dead@gg.ez");
         data.addStudent(59010093, "karnnumart", "karnnumart INW ZA", "k.iamthammarak@hotmail.com");
         data.addStudent(999, "999", "I've got 99 Problems and the Bitch ain't one", "bitchAint1@gg.ez");
+        data.addTeacher(555, "555", "sensei", "k.iamthammarak@hotmail.com");
         Data d = Data.getData();
         data.addCurriculum(1, "CE");
-        data.addCourse(55, "ooad", LocalDateTime.now(), 3, 10, 1);
-        data.getUser(123).addCourse(data.getCourse(55));
-        System.out.println(data.getUser(123).getName() + " - " + data.getCourse(55).getName());
-        d.saveData();
-        
-        Server sv = new Server(5000);
+        data.addCourse(1, "ooad", LocalDateTime.now(), 3, 10, 1);
+        data.addCourse(2, "SE", LocalDateTime.now().plusDays(1), 3, 10, 1);
+        data.addCourse(3, "ToC", LocalDateTime.now().plusDays(2), 3, 10, 1);
+        data.addCourse(4, "INDY", LocalDateTime.now().plusDays(3), 3, 10, 1);
+        data.addCourse(5, "ABE", LocalDateTime.now().plusDays(4), 3, 10, 1);
+        data.getUser(555).addCourse(data.getCourse(5));
+        data.getUser(555).addCourse(data.getCourse(4));
+        data.getUser(555).addCourse(data.getCourse(2));
+        data.getUser(555).addCourse(data.getCourse(1));
+        data.getCourse(1).addMember(data.getUser(555));
+        data.getCourse(1).addMember(data.getUser(123));
+        data.getCourse(1).addMember(data.getUser(1));
+        data.getCourse(1).addMember(data.getUser(999));
+        data.getCourse(1).addMember(data.getUser(59010093));
 
+
+        d.saveData();
+
+        Server sv = new Server(5000);
+ 
         while (true) {
             sv.waitClient();
             String m;
@@ -32,14 +47,12 @@ public class NotifireServer {
 //-----------------------ALL------------------------------                
             if (m.equals("login")) { // login
                 int id = (int) sv.fromClient(); // #2 id 
-                //int id = Integer.valueOf(ids);
-                System.out.println("id " + id);
                 String pass = (String) sv.fromClient(); // #3 pass 
-                System.out.println("pass " + pass);
                 if (data.getUser(id) != null) {
                     if (data.getUser(id).checkPassword(pass)) { //correct password
                         sv.toClient("correct");
                         sv.toClient(data.getUser(id));
+                        
                     }
                 }
             } else if (m.equals("changePassword")) {//Change Password
@@ -57,12 +70,17 @@ public class NotifireServer {
                 int id = (int) sv.fromClient(); // #2 course id
                 LocalDate date = (LocalDate) sv.fromClient(); //#3 date(Time) to cancel
                 data.getCourse(id).cancel(date);
-
+                
+                data.sendMail(id,"lesson cancel : "+data.getCourse(id).getName() , data.getCourse(id).getName() + "Has cancel class on" + date+ data,LocalDate.now()); //send mail request
+                
             } else if (m.equals("announce")) {// annouce
                 int id = (int) sv.fromClient(); // #2  course ID
                 String name = (String) sv.fromClient(); // #3 name
                 String message = (String) sv.fromClient(); //#4 message
                 data.getCourse(id).addAnnounce(name, message);
+
+                data.sendMail(id,"new announcement : "+name,message,LocalDate.now()); //send mail request
+
             } else if (m.equals("addTask")) {// Add Tasks
                 int id = (int) sv.fromClient(); //#2 course ID
                 String name = (String) sv.fromClient(); // #3 name

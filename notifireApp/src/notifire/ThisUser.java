@@ -1,10 +1,13 @@
 
 package notifire;
 
+import java.time.LocalDate;
+
 
 public class ThisUser{
     static private User u = null;
     static private String type = null;
+    static private LocalDate date = LocalDate.now();
     private ThisUser(){}
     static public void setUser(User user){
         u = user; 
@@ -19,7 +22,13 @@ public class ThisUser{
     static public User getUser(){
         return u;
     }
-    public String type(){
+    static public String type(){
         return type;
+    }
+    static public LocalDate date(){
+        return date;
+    }
+    static public void setDate(LocalDate d){
+        date = d;
     }
 }

@@ -32,7 +32,7 @@ public class Teacher extends User {
 
     public void cancel(int courseId, LocalDate date) throws IOException, ClassNotFoundException {
         Client client = new Client("127.0.0.1", 5000);
-        client.toServer("cencel");
+        client.toServer("cancel");
         client.toServer(courseId);
         client.toServer(date);
         client.disconnect();

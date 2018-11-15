@@ -77,8 +77,9 @@ public class HomeController implements Initializable {
         linkTo("Announce");
         
     }
-    @FXML private void selectDate(){
+    @FXML private void selectDate() throws IOException{
         selected.setText(ThisUser.date().toString());
+        
         
     }
     

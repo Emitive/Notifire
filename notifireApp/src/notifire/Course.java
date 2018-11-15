@@ -64,7 +64,7 @@ public class Course implements Serializable {
             announce.get(deadline).appendMessage(s);
         } else {
             Task t = new Task(name, s, deadline);
-            announce.put(t.getDeadline(), t);
+            announce.put(t.getAnnoucedDate(), t);
         }
     }
 

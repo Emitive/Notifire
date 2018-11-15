@@ -40,13 +40,13 @@ public class AnnounceController implements Initializable {
     @FXML private ComboBox <String> sub;
     
     @FXML private void OK() throws IOException, ClassNotFoundException{
-        linkTo("Home");
-        //int courseiD = sub.get
         String[] part = sub.getSelectionModel().getSelectedItem().split("-");
         int courseId = Integer.parseInt(part[0]);
-        System.out.println(courseId);
+
         Teacher t = (Teacher)ThisUser.getUser();
         t.announce(courseId, head.getText(), text.getText());
+        
+        linkTo("Home");
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

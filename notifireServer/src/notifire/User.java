@@ -63,6 +63,7 @@ public abstract class User implements Serializable {
     }
 
     public void addCourse(Course c) {
+        c.addMember(this);
         this.course.put(c.getId(), c);
     }
 

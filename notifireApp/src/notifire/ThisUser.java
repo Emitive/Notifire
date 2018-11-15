@@ -8,6 +8,7 @@ public class ThisUser{
     static private User u = null;
     static private String type = null;
     static private LocalDate date = LocalDate.now();
+    final static public String ip = "127.0.0.1";//"161.246.6.33";
     private ThisUser(){}
     static public void setUser(User user){
         u = user; 

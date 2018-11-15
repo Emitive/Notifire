@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.*;
@@ -24,6 +25,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import notifire.ThisUser;
+import notifire.*;
+import notifire.Course;
 
 public class FullCalendarView {
 
@@ -31,7 +35,7 @@ public class FullCalendarView {
     private VBox view;
     private Text calendarTitle;
     private YearMonth currentYearMonth;
-
+    private HashMap<LocalDate,Integer> position = new HashMap<>();
     /**
      * Create a calendar view
      *
@@ -112,12 +116,24 @@ public class FullCalendarView {
             ap.setTopAnchor(txt, 10.0);
             ap.setLeftAnchor(txt, 1.0);
             ap.getChildren().add(txt);
-            setDayText(LocalDate.now(), "yaha");
 
             calendarDate = calendarDate.plusDays(1);
         }
         // Change the title of the calendar
         calendarTitle.setText(yearMonth.getMonth().toString() + " " + String.valueOf(yearMonth.getYear()));
+        
+        //----- loop 
+        HashMap<Integer, Course> map = ThisUser.getUser().getCourse();
+        for(HashMap.Entry<Integer, Course> course : map.entrySet()) {
+            Course c = course.getValue();
+            HashMap<LocalDate,Announce> aMap = c.getAnnounce();
+            for(HashMap.Entry<LocalDate, Announce> announce : aMap.entrySet()){
+                setDayText(announce.getValue().getAnnoucedDate(),announce.getValue().getName());
+            }
+
+        }
+        //loop for every course
+        
     }
 
     public void setDayText(LocalDate d, String s) {
@@ -128,7 +144,14 @@ public class FullCalendarView {
         
         Text txt = new Text(s);
         ap.setBottomAnchor(txt, 1.0);
-        ap.setRightAnchor(txt, 10.0);
+        if(position.containsKey(d)){
+            int t = position.get(d);
+            ap.setBottomAnchor(txt, 15.0+t);
+            position.put(d, t+30);
+        }else{
+            position.put(d, 5);
+            ap.setBottomAnchor(txt, 15.0);
+        }
         ap.getChildren().add(txt);
         
     }

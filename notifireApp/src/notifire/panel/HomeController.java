@@ -23,7 +23,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import notifire.Client;
 import notifire.ThisUser;
+import notifire.User;
 
 /**
  * FXML Controller class
@@ -84,7 +86,15 @@ public class HomeController implements Initializable {
     private void addTask() throws IOException {
         linkTo("AddTask");
     }
-
+    
+    public HomeController() throws IOException, ClassNotFoundException{ //update user data
+        Client client = new Client(ThisUser.ip,5000);
+        client.toServer("home");
+        client.toServer(ThisUser.getUser().getId());
+        ThisUser.setUser((User)client.fromServer());
+        client.disconnect();
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -92,13 +102,7 @@ public class HomeController implements Initializable {
         ObservableList<Node> n = fv.getView().getChildren();
         date.setText(fv.getMonth());
         pane.getChildren().addAll(n);
-        pane.autosize();
-        name.setText(ThisUser.getUser().getName());
-        if(ThisUser.type().equals("Student")){
-            temp.setVisible(false);
-        }
-        
-        
+        name.setText(ThisUser.getUser().getName());     
     }
 
     private void linkTo(String s) throws IOException {

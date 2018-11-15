@@ -31,7 +31,7 @@ public abstract class User implements Serializable {
     }
 
     public boolean changePassword(String oldPassword, String newPassword) throws IOException, ClassNotFoundException {
-        Client client = new Client("127.0.0.1", 5000);
+        Client client = new Client(ThisUser.ip, 5000);
         client.toServer("changePassword");
         client.toServer(oldPassword);
         client.toServer(newPassword);

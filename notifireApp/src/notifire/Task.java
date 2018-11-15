@@ -15,7 +15,9 @@ public class Task extends Announce  implements Serializable{
         this.deadline = deadline;
     }
 
-    public LocalDate getDeadline() {
+
+    @Override
+    public LocalDate getAnnoucedDate() {
         return deadline;
     }
 

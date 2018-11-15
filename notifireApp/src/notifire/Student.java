@@ -9,7 +9,7 @@ public class Student extends User {
     }
 
     public void joinCourse(int userId, int courseId) throws IOException, ClassNotFoundException {
-        Client client = new Client("127.0.0.1", 5000);
+        Client client = new Client(ThisUser.ip, 5000);
         client.toServer("joinCourse");
         client.toServer(userId);
         client.toServer(courseId);

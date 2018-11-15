@@ -44,7 +44,7 @@ public class LoginController implements Initializable {
             id.setText("");
             return;
         }
-        client = new Client("127.0.0.1", 5000);
+        client = new Client(ThisUser.ip, 5000);
         client.toServer("login");
         client.toServer(d);
         client.toServer(pass.getText());
@@ -52,7 +52,7 @@ public class LoginController implements Initializable {
         System.out.println(res);
         if (res.equals("correct")) {
             ThisUser.setUser((User) client.fromServer());
-            
+            client.disconnect();
             String time = "Morning ";
             if(LocalTime.now().isAfter(LocalTime.NOON)){
                 time = "Afternoon ";
@@ -64,6 +64,7 @@ public class LoginController implements Initializable {
             //client.disconnect();
 
             Stage stage = (Stage) id.getScene().getWindow();
+            stage.setResizable(false);
             Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
 
             //create a new scene with root and set the stage
@@ -75,7 +76,7 @@ public class LoginController implements Initializable {
             id.setText("");
             pass.setText("");
         }
-        client.disconnect();
+        
     }
 
     @Override

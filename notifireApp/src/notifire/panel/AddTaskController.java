@@ -21,9 +21,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import notifire.Course;
+import notifire.Teacher;
 import notifire.ThisUser;
 
 /**
@@ -38,24 +43,23 @@ ObservableList list = FXCollections.observableArrayList();
      */
     @FXML
     private Button ok;
-    @FXML private ChoiceBox <String> sub;
+    @FXML private ComboBox <String> sub;
+    @FXML private DatePicker dp;
+    @FXML private TextField time;
+    @FXML private AnchorPane ap;
+     @FXML private TextArea text;
 
     @FXML
-    void OK() throws IOException {
+    void OK() throws IOException,ClassNotFoundException {
         
-        Stage stage = (Stage) ok.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-
-        //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-     
+        String[] part = sub.getSelectionModel().getSelectedItem().split("-");
+        int courseId = Integer.parseInt(part[0]);
+        Teacher t = (Teacher)ThisUser.getUser();
+        t.addTask(courseId,time.getText(),text.getText() ,dp.getValue());
+        System.out.println("deadline: " + dp.getValue().toString());
+        linkTo("Home");
     }
     
-    @FXML
-    private DatePicker dp;
-
     @FXML
     void getDate() {
         Calendar c = GregorianCalendar.from(dp.getValue().atStartOfDay(ZoneId.systemDefault()));
@@ -65,12 +69,18 @@ ObservableList list = FXCollections.observableArrayList();
         list.removeAll(list);
         HashMap<Integer,Course> map = ThisUser.getUser().getCourse();
         
-        map.forEach((k,v)->list.addAll(v.getName()));
+        map.forEach((k,v)->list.addAll(v.getId() +"-"+ v.getName()));
         sub.getItems().addAll(list);
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       loadData();
+    }
+     private void linkTo(String s) throws IOException {
+        Scene sc = ap.getScene();
+        Parent root = FXMLLoader.load(getClass().getResource(s + ".fxml"));
+        sc.setRoot(root);
+        
     }
 
 }

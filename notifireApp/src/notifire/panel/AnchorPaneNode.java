@@ -29,6 +29,7 @@ public class AnchorPaneNode extends AnchorPane {
         super(children);
         // Add action handler for mouse clicked
         this.setOnMouseClicked(e -> ThisUser.setDate(this.date));
+       
     }
     
     

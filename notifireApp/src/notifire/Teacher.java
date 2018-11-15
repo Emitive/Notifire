@@ -12,7 +12,7 @@ public class Teacher extends User {
     }
 
     public void announce(int courseId, String name, String message) throws IOException, ClassNotFoundException {
-        Client client = new Client("127.0.0.1", 5000);
+        Client client = new Client(ThisUser.ip, 5000);
         client.toServer("announce");
         client.toServer(courseId);
         client.toServer(name);
@@ -21,7 +21,7 @@ public class Teacher extends User {
     }
 
     public void addTask(int courseId, String name, String message, LocalDate deadline) throws IOException, ClassNotFoundException {
-        Client client = new Client("127.0.0.1", 5000);
+        Client client = new Client(ThisUser.ip, 5000);
         client.toServer("addTask");
         client.toServer(courseId);
         client.toServer(name);
@@ -31,7 +31,7 @@ public class Teacher extends User {
     }
 
     public void cancel(int courseId, LocalDate date) throws IOException, ClassNotFoundException {
-        Client client = new Client("127.0.0.1", 5000);
+        Client client = new Client(ThisUser.ip, 5000);
         client.toServer("cancel");
         client.toServer(courseId);
         client.toServer(date);
@@ -39,7 +39,7 @@ public class Teacher extends User {
     }
 
     public void makeUp(int courseId, LocalDateTime date) throws IOException, ClassNotFoundException {
-        Client client = new Client("127.0.0.1", 5000);
+        Client client = new Client(ThisUser.ip, 5000);
         client.toServer("makeUp");
         client.toServer(courseId);
         client.toServer(date);
@@ -47,7 +47,7 @@ public class Teacher extends User {
     }
 
     public void joinCourse(int userId, int courseId) throws IOException, ClassNotFoundException {
-        Client client = new Client("127.0.0.1", 5000);
+        Client client = new Client(ThisUser.ip, 5000);
         client.toServer("joinCourse");
         client.toServer(userId);
         client.toServer(courseId);

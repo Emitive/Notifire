@@ -26,12 +26,8 @@ public class NotifireServer {
         data.getUser(555).addCourse(data.getCourse(4));
         data.getUser(555).addCourse(data.getCourse(2));
         data.getUser(555).addCourse(data.getCourse(1));
-        data.getCourse(1).addMember(data.getUser(555));
-        data.getCourse(1).addMember(data.getUser(123));
-        data.getCourse(1).addMember(data.getUser(1));
-        data.getCourse(1).addMember(data.getUser(999));
-        data.getCourse(1).addMember(data.getUser(59010093));
-
+        data.getUser(123).addCourse(data.getCourse(1));
+        data.getUser(1).addCourse(data.getCourse(3));
 
         d.saveData();
 
@@ -60,6 +56,7 @@ public class NotifireServer {
                 String oldPass = (String) sv.fromClient();//#3 Old Password
                 String newPass = (String) sv.fromClient();//#4 New Password
                 data.getUser(id).changePassword(oldPass, newPass);
+                d.saveData();
                 sv.toClient("Change Password Complete");
             } else if (m.equals("home")) { // Back to Home
                 int id = (int) sv.fromClient();// ยังไม่เสร็จ
@@ -70,7 +67,7 @@ public class NotifireServer {
                 int id = (int) sv.fromClient(); // #2 course id
                 LocalDate date = (LocalDate) sv.fromClient(); //#3 date(Time) to cancel
                 data.getCourse(id).cancel(date);
-                
+                d.saveData();
                 data.sendMail(id,"lesson cancel : "+data.getCourse(id).getName() , data.getCourse(id).getName() + "Has cancel class on" + date+ data,LocalDate.now()); //send mail request
                 
             } else if (m.equals("announce")) {// annouce
@@ -78,8 +75,8 @@ public class NotifireServer {
                 String name = (String) sv.fromClient(); // #3 name
                 String message = (String) sv.fromClient(); //#4 message
                 data.getCourse(id).addAnnounce(name, message);
-
                 data.sendMail(id,"new announcement : "+name,message,LocalDate.now()); //send mail request
+                d.saveData();
 
             } else if (m.equals("addTask")) {// Add Tasks
                 int id = (int) sv.fromClient(); //#2 course ID
@@ -87,16 +84,18 @@ public class NotifireServer {
                 String message = (String) sv.fromClient(); // #4 message
                 LocalDate date = (LocalDate) sv.fromClient(); //#5 date(
                 data.getCourse(id).addTask(name, message, date);
+                d.saveData();
             } else if (m.equals("makeUp")) {// Make Up Class
                 int id = (int) sv.fromClient(); //#2 course ID
                 LocalDateTime date = (LocalDateTime) sv.fromClient(); //#3 date
                 data.getCourse(id).makeUp(date);
+                d.saveData();
             } //----------------------------Teacher/Student------------------------------------------               
             else if (m.equals("joinCourse")) {// Join a Course
                 int userId = (int) sv.fromClient(); // #2 User ID
                 int courseId = (int) sv.fromClient();//#3 Course ID
-                data.getCourse(courseId).addMember(data.getUser(userId));
                 data.getUser(userId).addCourse(data.getCourse(courseId));
+                d.saveData();
             } //---------------------------Admin--------------------------------------------------             
             else if (m.equals("addCourse")) {// Add New Courses
                 int id = (int) sv.fromClient();//#2 User courseID
@@ -106,26 +105,29 @@ public class NotifireServer {
                 int total = (int) sv.fromClient();//#6 Total class
                 int cId = (int) sv.fromClient();// #7  Curriculum Id
                 data.addCourse(id, name, startDate, period, total, cId);
-
+                d.saveData();
             } else if (m.equals("addCurriculum")) {// Add New Curriculums
                 int id = (int) sv.fromClient();//#2 User ID
                 String name = (String) sv.fromClient();//#3 Currculums name
                 data.addCurriculum(id, name);
+                d.saveData();
             } else if (m.equals("addUser")) { //Add New Users
                 String type = (String) sv.fromClient();//#2 User Type(Teacher/Student)
                 int id = (int) sv.fromClient();//#3 User ID
                 String pass = (String) sv.fromClient();//#4 User password
                 String name = (String) sv.fromClient();//#5 User Name
                 String email = (String) sv.fromClient();//#6 User Email
-                if (type.equals("teacher")) {
+                if (type.equals("Teacher")) {
                     data.addTeacher(id, pass, name, email);
                 } else {
                     data.addStudent(id, pass, name, email);
                 }
+                d.saveData();
             } else if (m.equals("linkCourseCurriculum")) {//Link Course to Curriculum
                 int courseId = (int) sv.fromClient();// #2 Course ID
                 int curriculumId = (int) sv.fromClient();// #3 Curriculum ID
                 data.getCurriculum(curriculumId).addCourse(data.getCourse(courseId));
+                d.saveData();
             }
 
             if (!correct) {

@@ -3,6 +3,7 @@ package notifire;
 
 import java.net.*;
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,7 +44,8 @@ public class Client {
     public void disconnect() throws ClassNotFoundException {
         try {
             fromServer();
-            toServer("over");
+            System.out.println("server want to close");
+            System.out.println(LocalDateTime.now());
             in.close();
             out.close();
             socket.close();

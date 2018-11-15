@@ -35,7 +35,8 @@ public class FullCalendarView {
     private VBox view;
     private Text calendarTitle;
     private YearMonth currentYearMonth;
-    private HashMap<LocalDate,Integer> position = new HashMap<>();
+    private HashMap<LocalDate, Integer> position = new HashMap<>();
+
     /**
      * Create a calendar view
      *
@@ -45,14 +46,15 @@ public class FullCalendarView {
         currentYearMonth = yearMonth;
         // Create the calendar grid pane
         GridPane calendar = new GridPane();
-        calendar.setPrefSize(700, 500);
+        calendar.setPrefSize(730, 640);
         calendar.setGridLinesVisible(true);
 
         // Create rows and columns with anchor panes for the calendar
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 AnchorPaneNode ap = new AnchorPaneNode();
-                ap.setPrefSize(150, 150);
+                ap.setMinSize(100, 80);
+                ap.setMaxSize(100, 80);
                 calendar.add(ap, j, i);
                 allCalendarDays.add(ap);
 
@@ -68,7 +70,8 @@ public class FullCalendarView {
         for (Text txt : dayNames) {
             AnchorPane ap = new AnchorPane();
             ap.setPrefSize(200, 0);
-            ap.setBottomAnchor(txt, 2.0);
+            ap.setLeftAnchor(txt, 2.0);
+            ap.setTopAnchor(txt, 2.0);
             ap.getChildren().add(txt);
             dayLabels.add(ap, col++, 0);
         }
@@ -105,6 +108,7 @@ public class FullCalendarView {
             calendarDate = calendarDate.minusDays(1);
         }
         // Populate the calendar with day numbers
+
         for (AnchorPaneNode ap : allCalendarDays) {
 
             if (ap.getChildren().size() != 0) {
@@ -121,43 +125,44 @@ public class FullCalendarView {
         }
         // Change the title of the calendar
         calendarTitle.setText(yearMonth.getMonth().toString() + " " + String.valueOf(yearMonth.getYear()));
-        
         //----- loop 
         HashMap<Integer, Course> map = ThisUser.getUser().getCourse();
-        for(HashMap.Entry<Integer, Course> course : map.entrySet()) {
+        for (HashMap.Entry<Integer, Course> course : map.entrySet()) {
             Course c = course.getValue();
-            HashMap<LocalDate,Announce> aMap = c.getAnnounce();
-            for(HashMap.Entry<LocalDate, Announce> announce : aMap.entrySet()){
-                setDayText(announce.getValue().getAnnoucedDate(),announce.getValue().getName());
+            HashMap<LocalDate, Announce> aMap = c.getAnnounce();
+            for (HashMap.Entry<LocalDate, Announce> announce : aMap.entrySet()) {
+                setDayText(announce.getValue().getAnnoucedDate(), announce.getValue().getName());
             }
 
         }
         //loop for every course
         
+
     }
 
     public void setDayText(LocalDate d, String s) {
         // Get the date we want to start with on the calendar
-        LocalDate firstDay = d.of(d.getYear(),d.getMonth(),1);
-        int offset = firstDay.getDayOfWeek().getValue(); //monday = 1; sunday = 7
-        AnchorPane ap = allCalendarDays.get(d.getDayOfMonth() + offset-1);
-        
-        Text txt = new Text(s);
-        ap.setBottomAnchor(txt, 1.0);
-        if(position.containsKey(d)){
-            int t = position.get(d);
-            ap.setBottomAnchor(txt, 15.0+t);
-            position.put(d, t+30);
+        if (d.getMonthValue() == currentYearMonth.getMonthValue()) {
+            LocalDate firstDay = d.of(d.getYear(), d.getMonth(), 1);
+            int offset = firstDay.getDayOfWeek().getValue(); //monday = 1; sunday = 7
+            System.out.println("offset " + (d.getDayOfMonth() + offset - 1));
+            System.out.println("date: " + d);
+            AnchorPane ap = allCalendarDays.get(d.getDayOfMonth() + offset - 1);
+
+            Text txt = new Text(s);
+            ap.setBottomAnchor(txt, 1.0);
+            ap.setRightAnchor(txt, 1.0);
+            ap.getChildren().add(txt);
+            System.out.println(ap.getChildren().toString());
         }else{
-            position.put(d, 5);
-            ap.setBottomAnchor(txt, 15.0);
+            //System.out.println("outer date: - " + d +" - "+ s);
         }
-        ap.getChildren().add(txt);
-        
+
     }
 
     /**
-     * Move the month back by one. Repopulate the calendar with the correct dates.
+     * Move the month back by one. Repopulate the calendar with the correct
+     * dates.
      */
     public void previousMonth() {
         currentYearMonth = currentYearMonth.minusMonths(1);
@@ -165,11 +170,13 @@ public class FullCalendarView {
     }
 
     /**
-     * Move the month forward by one. Repopulate the calendar with the correct dates.
+     * Move the month forward by one. Repopulate the calendar with the correct
+     * dates.
      */
-    public String getMonth(){
+    public String getMonth() {
         return calendarTitle.getText();
     }
+
     public void nextMonth() {
         currentYearMonth = currentYearMonth.plusMonths(1);
         populateCalendar(currentYearMonth);
@@ -186,5 +193,5 @@ public class FullCalendarView {
     public void setAllCalendarDays(ArrayList<AnchorPaneNode> allCalendarDays) {
         this.allCalendarDays = allCalendarDays;
     }
-    
+
 }

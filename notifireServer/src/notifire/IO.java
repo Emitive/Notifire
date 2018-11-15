@@ -20,7 +20,7 @@ public class IO {
         
         new File(dir).mkdirs();
         this.file = new File(dir);
-        System.out.println("file set");
+        //System.out.println("file set");
     }
 
     public boolean exist(String fName) throws FileNotFoundException, IOException {
@@ -33,18 +33,18 @@ public class IO {
         File tmp = new File(dest);
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(dest));
         oos.writeObject(obj);
-        System.out.println("Saved");
+        System.out.println(" io - Saved");
     }
 
     public Object load(String fName) throws FileNotFoundException, IOException, ClassNotFoundException {
         String dest = dir + fName +ext;
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(dest));
-            System.out.println("Loaded");
+            System.out.println(" io - Loaded");
             return ois.readObject();
 
         } catch (IOException e) {
-            System.out.println("File not found");
+            System.out.println(" io - File not found");
             return null;
         }
     }

@@ -90,10 +90,10 @@ public class HomeController implements Initializable {
     
     public HomeController() throws IOException, ClassNotFoundException{ //update user data
         Client client = new Client(ThisUser.ip,5000);
-        client.toServer("home");
-        client.toServer(ThisUser.getUser().getId());
-        ThisUser.setUser((User)client.fromServer());
-        client.disconnect();
+        client.toServer("home");//1
+        client.toServer(ThisUser.getUser().getId());//2
+        ThisUser.setUser((User)client.fromServer());//3
+        client.disconnect();//4+5
     }
     
     @Override

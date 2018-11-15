@@ -49,13 +49,13 @@ public class Course implements Serializable {
     }
 
     public void addAnnounce(String name, String s) { //teacher
-        if (announce.containsKey(LocalDate.now())) {
-            announce.get(LocalDate.now()).appendName(name);
-            announce.get(LocalDate.now()).appendMessage(s);
-        } else {
+//        if (announce.containsKey(LocalDate.now())) {
+//            announce.get(LocalDate.now()).appendName(name);
+//            announce.get(LocalDate.now()).appendMessage(s);
+//        } else {
             Announce a = new Announce(name, s);
             announce.put(a.getAnnoucedDate(), a);
-        }
+ //       }
     }
 
     public void addTask(String name, String s, LocalDate deadline) { //teacher

@@ -30,8 +30,10 @@ public class AnchorPaneNode extends AnchorPane {
     public AnchorPaneNode(Node... children) {
         super(children);
         // Add action handler for mouse clicked
-        this.setOnMouseClicked(e -> ThisUser.setDate(this.date));
-        
+        this.setStyle("-fx-background-color: #c5d9e5; -fx-border-color: #000000");
+        this.setOnMouseClicked(e ->{ ThisUser.setDate(this.date);});
+        this.setOnMouseEntered(e ->{ this.setStyle("-fx-background-color: #16a9ff; -fx-border-color: #000000"); });
+        this.setOnMouseExited(e ->{ this.setStyle("-fx-background-color:  #c5d9e5; -fx-border-color: #100000"); });
        
     }
     

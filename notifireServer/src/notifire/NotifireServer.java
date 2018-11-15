@@ -3,6 +3,7 @@ package notifire;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,27 +11,14 @@ public class NotifireServer {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Data data = Data.getData();
-        data.addStudent(123, "qwerty", "qwerty-san", "gg@gg.gg");
-        data.addTeacher(1, "onepunch", "saitama", "dead@gg.ez");
-        data.addStudent(59010093, "karnnumart", "karnnumart INW ZA", "k.iamthammarak@hotmail.com");
-        data.addStudent(999, "999", "I've got 99 Problems and the Bitch ain't one", "bitchAint1@gg.ez");
-        data.addTeacher(555, "555", "sensei", "k.iamthammarak@hotmail.com");
-        Data d = Data.getData();
+        data.addTeacher(555, "555","kan", "k.iamthammaarak@hotmail.com");
         data.addCurriculum(1, "CE");
-        data.addCourse(1, "ooad", LocalDateTime.now(), 3, 10, 1);
-        data.addCourse(2, "SE", LocalDateTime.now().plusDays(1), 3, 10, 1);
-        data.addCourse(3, "ToC", LocalDateTime.now().plusDays(2), 3, 10, 1);
-        data.addCourse(4, "INDY", LocalDateTime.now().plusDays(3), 3, 10, 1);
-        data.addCourse(5, "ABE", LocalDateTime.now().plusDays(4), 3, 10, 1);
-        data.getUser(555).addCourse(data.getCourse(5));
-        data.getUser(555).addCourse(data.getCourse(4));
-        data.getUser(555).addCourse(data.getCourse(2));
+        data.addCourse(1, "se", LocalDateTime.of(2018,10,23,13,00), 3, 20, 1);
+        data.addCourse(2, "oo", LocalDateTime.of(2018,10,22,9,00), 3, 20, 1);
+        data.addCourse(3, "ToC", LocalDateTime.of(2018,10,20,9,00), 3, 20, 1);
         data.getUser(555).addCourse(data.getCourse(1));
-        data.getUser(123).addCourse(data.getCourse(1));
-        data.getUser(1).addCourse(data.getCourse(3));
-
-        d.saveData();
-
+        data.getUser(555).addCourse(data.getCourse(2));
+        data.getUser(555).addCourse(data.getCourse(3));
         Server sv = new Server(5000);
  
         while (true) {
@@ -56,7 +44,6 @@ public class NotifireServer {
                 String oldPass = (String) sv.fromClient();//#3 Old Password
                 String newPass = (String) sv.fromClient();//#4 New Password
                 data.getUser(id).changePassword(oldPass, newPass);
-                d.saveData();
                 sv.toClient("Change Password Complete");
             } else if (m.equals("home")) { // Back to Home
                 int id = (int) sv.fromClient();// ยังไม่เสร็จ
@@ -67,7 +54,6 @@ public class NotifireServer {
                 int id = (int) sv.fromClient(); // #2 course id
                 LocalDate date = (LocalDate) sv.fromClient(); //#3 date(Time) to cancel
                 data.getCourse(id).cancel(date);
-                d.saveData();
                 data.sendMail(id,"lesson cancel : "+data.getCourse(id).getName() , data.getCourse(id).getName() + "Has cancel class on" + date+ data,LocalDate.now()); //send mail request
                 
             } else if (m.equals("announce")) {// annouce
@@ -76,7 +62,6 @@ public class NotifireServer {
                 String message = (String) sv.fromClient(); //#4 message
                 data.getCourse(id).addAnnounce(name, message);
                 data.sendMail(id,"new announcement : "+name,message,LocalDate.now()); //send mail request
-                d.saveData();
 
             } else if (m.equals("addTask")) {// Add Tasks
                 int id = (int) sv.fromClient(); //#2 course ID
@@ -84,18 +69,17 @@ public class NotifireServer {
                 String message = (String) sv.fromClient(); // #4 message
                 LocalDate date = (LocalDate) sv.fromClient(); //#5 date(
                 data.getCourse(id).addTask(name, message, date);
-                d.saveData();
+                data.sendMail(id, "new task:" + name +" , "+ data.getCourse(id),"New task has arrived!\n\n" + message, date);
             } else if (m.equals("makeUp")) {// Make Up Class
                 int id = (int) sv.fromClient(); //#2 course ID
                 LocalDateTime date = (LocalDateTime) sv.fromClient(); //#3 date
                 data.getCourse(id).makeUp(date);
-                d.saveData();
             } //----------------------------Teacher/Student------------------------------------------               
             else if (m.equals("joinCourse")) {// Join a Course
                 int userId = (int) sv.fromClient(); // #2 User ID
                 int courseId = (int) sv.fromClient();//#3 Course ID
                 data.getUser(userId).addCourse(data.getCourse(courseId));
-                d.saveData();
+                
             } //---------------------------Admin--------------------------------------------------             
             else if (m.equals("addCourse")) {// Add New Courses
                 int id = (int) sv.fromClient();//#2 User courseID
@@ -105,12 +89,12 @@ public class NotifireServer {
                 int total = (int) sv.fromClient();//#6 Total class
                 int cId = (int) sv.fromClient();// #7  Curriculum Id
                 data.addCourse(id, name, startDate, period, total, cId);
-                d.saveData();
+                
             } else if (m.equals("addCurriculum")) {// Add New Curriculums
                 int id = (int) sv.fromClient();//#2 User ID
                 String name = (String) sv.fromClient();//#3 Currculums name
                 data.addCurriculum(id, name);
-                d.saveData();
+                
             } else if (m.equals("addUser")) { //Add New Users
                 String type = (String) sv.fromClient();//#2 User Type(Teacher/Student)
                 int id = (int) sv.fromClient();//#3 User ID
@@ -122,21 +106,21 @@ public class NotifireServer {
                 } else {
                     data.addStudent(id, pass, name, email);
                 }
-                d.saveData();
             } else if (m.equals("linkCourseCurriculum")) {//Link Course to Curriculum
                 int courseId = (int) sv.fromClient();// #2 Course ID
                 int curriculumId = (int) sv.fromClient();// #3 Curriculum ID
                 data.getCurriculum(curriculumId).addCourse(data.getCourse(courseId));
-                d.saveData();
             }
 
             if (!correct) {
                 sv.toClient("incorrect");
             }
             sv.toClient("done");
-            sv.fromClient();
+            System.out.println("I  want to close");
+            System.out.println(LocalDateTime.now());
+            data.saveData();
         }
-
+        
     }
 
 }

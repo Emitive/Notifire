@@ -2,17 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< Updated upstream
         <group>
-            <file>file:/C:/Users/59010401/Desktop/oooooooooo/notifireApp/src/notifire/panel/AddTaskController.java</file>
-            <file>file:/C:/Users/59010401/Desktop/oooooooooo/notifireApp/src/notifire/panel/HomeController.java</file>
-            <file>file:/C:/Users/59010401/Desktop/oooooooooo/notifireApp/src/notifire/Teacher.java</file>
-            <file>file:/C:/Users/59010401/Desktop/oooooooooo/notifireApp/src/notifire/panel/AnchorPaneNode.java</file>
-            <file>file:/C:/Users/59010401/Desktop/oooooooooo/notifireApp/src/notifire/ThisUser.java</file>
-            <file>file:/C:/Users/59010401/Desktop/oooooooooo/notifireApp/src/notifire/panel/FullCalendarView.java</file>
+            <file>file:/C:/Users/WIN%207/Desktop/OOAD%20NotiFiRE/NotifireGit/notifireApp/src/notifire/panel/FullCalendarView.java</file>
+            <file>file:/C:/Users/WIN%207/Desktop/OOAD%20NotiFiRE/NotifireGit/notifireApp/src/notifire/panel/AnnounceController.java</file>
+            <file>file:/C:/Users/WIN%207/Desktop/OOAD%20NotiFiRE/NotifireGit/notifireApp/src/notifire/ThisUser.java</file>
+            <file>file:/C:/Users/WIN%207/Desktop/OOAD%20NotiFiRE/NotifireGit/notifireApp/src/notifire/panel/HomeController.java</file>
+            <file>file:/C:/Users/WIN%207/Desktop/OOAD%20NotiFiRE/NotifireGit/notifireApp/src/notifire/panel/AnchorPaneNode.java</file>
+            <file>file:/C:/Users/WIN%207/Desktop/OOAD%20NotiFiRE/NotifireGit/notifireApp/src/notifire/Client.java</file>
+            <file>file:/C:/Users/WIN%207/Desktop/OOAD%20NotiFiRE/NotifireGit/notifireApp/src/notifire/panel/AddTaskController.java</file>
         </group>
-=======
-        <group/>
->>>>>>> Stashed changes
     </open-files>
 </project-private>

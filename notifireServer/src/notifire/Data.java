@@ -90,12 +90,12 @@ public class Data implements Serializable { // We create/access everything here.
 
     public void sendMail(int courseId, String head, String message, LocalDate date) throws IOException, ClassNotFoundException {
         System.out.println("Mail commented header is : " + head);
-//        Client client = new Client("127.0.0.1", 5001);
-//        ArrayList<EmailRequest> aList = new ArrayList<>();
-//        HashMap<Integer, User> map = data.getCourse(courseId).getMember();
-//        map.forEach((k, v) -> aList.add(new EmailRequest(v.getEmail(), head, message, date)));
-//        client.toServer(aList);
-//        client.disconnect();
+        Client client = new Client("127.0.0.1", 5001);
+        ArrayList<EmailRequest> aList = new ArrayList<>();
+        HashMap<Integer, User> map = data.getCourse(courseId).getMember();
+        map.forEach((k, v) -> aList.add(new EmailRequest(v.getEmail(), head, message, date)));
+        client.toServer(aList);
+        client.disconnect();
     }
 
 }

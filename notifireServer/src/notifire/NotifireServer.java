@@ -13,6 +13,7 @@ public class NotifireServer {
         data.addStudent(123, "qwerty", "qwerty-san", "gg@gg.gg");
         data.addTeacher(1, "onepunch", "saitama", "dead@gg.ez");
         data.addStudent(59010093, "karnnumart", "karnnumart INW ZA", "k.iamthammarak@hotmail.com");
+        data.addStudent(59010401, "Nattakitt", "Thetin", "59010401@gmail.com");
         data.addStudent(999, "999", "I've got 99 Problems and the Bitch ain't one", "bitchAint1@gg.ez");
         data.addTeacher(555, "555", "sensei", "k.iamthammarak@hotmail.com");
         Data d = Data.getData();

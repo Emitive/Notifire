@@ -78,8 +78,8 @@ public class HomeController implements Initializable {
         
     }
     @FXML private void selectDate() throws IOException{
-        selected.setText(ThisUser.date().toString());
-        
+        //selected.setText(ThisUser.date().toString());
+        linkTo("Day");
         
     }
     

@@ -6,15 +6,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.AnnounceController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.DayController">
    <children>
       <Button layoutX="861.0" layoutY="524.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="64.0" text="OK" />
-      <Text fx:id="text" layoutX="50.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="116.609375">
+      <Text fx:id="date" layoutX="62.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="236.609375">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <ComboBox fx:id="sub" layoutX="62.0" layoutY="106.0" prefWidth="150.0" />
-      <Text layoutX="167.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TEXT" wrappingWidth="446.13671875" />
+      <ComboBox fx:id="sub" layoutX="62.0" layoutY="106.0" onAction="#selectSub" prefWidth="150.0" />
+      <Text fx:id="text" layoutX="167.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="663.13671875" />
    </children>
 </AnchorPane>

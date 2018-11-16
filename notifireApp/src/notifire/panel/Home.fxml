@@ -13,14 +13,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.HomeController">
    <children>
-      <SplitPane dividerPositions="0.85" prefHeight="600.0" prefWidth="1000.0">
+      <SplitPane dividerPositions="0.7915831663326653" prefHeight="600.0" prefWidth="1000.0">
         <items>
           <AnchorPane fx:id="ap" minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="592.0">
                <children>
-                  <Pane fx:id="pane" layoutX="51.0" layoutY="58.0" onMouseClicked="#selectDate" prefHeight="526.0" prefWidth="777.0">
-                     <children>
-                        <Text fx:id="selected" layoutX="345.0" layoutY="507.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="87.6708984375" />
-                     </children></Pane>
+                  <Pane fx:id="pane" layoutX="51.0" layoutY="58.0" onMouseClicked="#selectDate" prefHeight="526.0" prefWidth="777.0" />
                   <Button layoutX="286.0" layoutY="21.0" mnemonicParsing="false" onAction="#previous" text="&lt;&lt;" />
                   <Button layoutX="517.0" layoutY="21.0" mnemonicParsing="false" onAction="#next" text="&gt;&gt;" />
                   <Text fx:id="date" layoutX="340.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Month" textAlignment="CENTER" wrappingWidth="164.13671875">
@@ -32,15 +29,18 @@
                      <font>
                         <Font size="18.0" />
                      </font></Text>
+                  <Text fx:id="selected" layoutX="631.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="87.6708984375" />
                </children></AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="138.0" style="-fx-background-color: crimson;">
                <children>
-                  <Button fx:id="anc" layoutX="23.0" layoutY="47.0" mnemonicParsing="false" onAction="#announce" prefHeight="24.0" prefWidth="109.0" text="Announce" />
-                  <Button fx:id="task" layoutX="23.0" layoutY="108.0" mnemonicParsing="false" onAction="#addTask" prefHeight="24.0" prefWidth="109.0" text="Add Task" />
-                  <Button fx:id="makeUp" layoutX="23.0" layoutY="171.0" mnemonicParsing="false" onAction="#makeUp" prefHeight="24.0" prefWidth="109.0" text="Make up Course" />
-                  <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#cancel" prefHeight="24.0" prefWidth="109.0" text="Cancel Course" />
-                  <Button layoutX="23.0" layoutY="300.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="109.0" text="Join Course" />
-                  <Button fx:id="temp" layoutX="23.0" layoutY="407.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="109.0" text="Button" />
+                  <Button fx:id="anc" layoutX="23.0" layoutY="47.0" mnemonicParsing="false" onAction="#announce" prefHeight="31.0" prefWidth="141.0" text="Announce" />
+                  <Button fx:id="task" layoutX="23.0" layoutY="108.0" mnemonicParsing="false" onAction="#addTask" prefHeight="31.0" prefWidth="141.0" text="Add Task" />
+                  <Button fx:id="makeUp" layoutX="23.0" layoutY="171.0" mnemonicParsing="false" onAction="#makeUp" prefHeight="31.0" prefWidth="141.0" text="Make up Course" />
+                  <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#cancel" prefHeight="31.0" prefWidth="141.0" text="Cancel Course" />
+                  <Button fx:id="join" layoutX="23.0" layoutY="300.0" mnemonicParsing="false" onAction="#joint" prefHeight="31.0" prefWidth="141.0" text="Join Course" />
+                  <Button fx:id="temp" layoutX="23.0" layoutY="357.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="141.0" text="Edit profile" />
+                  <Button fx:id="logout" layoutX="19.0" layoutY="544.0" mnemonicParsing="false" onAction="#out" prefHeight="31.0" prefWidth="141.0" text="Logout" />
+                  <Button fx:id="join1" layoutX="23.0" layoutY="47.0" mnemonicParsing="false" onAction="#joint" prefHeight="31.0" prefWidth="141.0" text="Join Course" />
                </children>
             </AnchorPane>
         </items>

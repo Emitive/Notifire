@@ -13,7 +13,7 @@ public class NotifireServer {
         data.addStudent(123, "qwerty", "qwerty-san", "gg@gg.gg");
         data.addTeacher(1, "onepunch", "saitama", "dead@gg.ez");
         data.addStudent(59010093, "karnnumart", "karnnumart INW ZA", "k.iamthammarak@hotmail.com");
-        data.addStudent(59010401, "Nattakitt", "Thetin", "59010401@gmail.com");
+        data.addStudent(59010401, "Nattakitt", "Thetin", "rumatoijap@gmail.com");
         data.addStudent(999, "999", "I've got 99 Problems and the Bitch ain't one", "bitchAint1@gg.ez");
         data.addTeacher(555, "555", "sensei", "k.iamthammarak@hotmail.com");
         Data d = Data.getData();
@@ -32,6 +32,9 @@ public class NotifireServer {
         data.getCourse(1).addMember(data.getUser(1));
         data.getCourse(1).addMember(data.getUser(999));
         data.getCourse(1).addMember(data.getUser(59010093));
+        data.getCourse(1).addMember(data.getUser(59010401));
+        data.getUser(555).setEmail("555", "k.iamthammarak@hotmail.com");
+        data.addAdmin(111, "111", "admin", "admin@nail");
 
 
         d.saveData();
@@ -92,6 +95,7 @@ public class NotifireServer {
                 int id = (int) sv.fromClient(); //#2 course ID
                 LocalDateTime date = (LocalDateTime) sv.fromClient(); //#3 date
                 data.getCourse(id).makeUp(date);
+                data.sendMail(id," makeup class : "+data.getCourse(id).getName() , data.getCourse(id).getName() + "Has makeup class on " + date+ data,LocalDate.now()); //send mail request
             } //----------------------------Teacher/Student------------------------------------------               
             else if (m.equals("joinCourse")) {// Join a Course
                 int userId = (int) sv.fromClient(); // #2 User ID
@@ -134,8 +138,11 @@ public class NotifireServer {
             }
             sv.toClient("done");
             sv.fromClient();
+            data.saveData();
+            
+            
         }
-
+            
     }
 
 }

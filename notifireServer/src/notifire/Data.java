@@ -57,6 +57,17 @@ public class Data implements Serializable { // We create/access everything here.
         return true;
     }
 
+    public boolean addAdmin(int id, String pass, String name, String email) {
+        if (user.containsKey(id)) {
+            System.out.println("admin exist" + id);
+            return false;
+        }
+        Admin t = new Admin(id, pass, name, email);
+        user.put(id, t);
+        System.out.println("admin added" + id + name);
+        return true;
+    }
+
     public boolean addCurriculum(int id, String name) {
         if (cr.containsKey(id)) {
             return false;

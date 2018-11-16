@@ -45,6 +45,8 @@ public class HomeController implements Initializable {
     @FXML private Button makeUp;
     @FXML private Button temp;
     @FXML private Button join;
+    @FXML private Button logout;
+    
     
     @FXML private Text selected;
     @FXML private Text date;
@@ -55,6 +57,14 @@ public class HomeController implements Initializable {
     @FXML
     private void makeUp() throws IOException{
          linkTo("Makeup");
+    }
+    @FXML
+    private void joint() throws IOException{
+         linkTo("joint");
+    }
+    @FXML
+    private void out() throws IOException{
+         linkTo("Home");
     }
     @FXML
     private void cancel()throws IOException {

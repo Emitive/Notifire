@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import notifire.Announce;
@@ -36,7 +38,8 @@ public class DayController implements Initializable {
     @FXML
     private ComboBox<String> sub;
     @FXML
-    private Text text;
+    private TextArea text;
+    @FXML private TextField header;
 
     /**
      * Initializes the controller class.
@@ -56,9 +59,12 @@ public class DayController implements Initializable {
         Course selectedCourse = (Course) ThisUser.getUser().getCourse().get(courseId);
         Announce a = (Announce) selectedCourse.getAnnounce().get(ThisUser.date());
         if (a != null) {
-            name = a.getName();
-            message = a.getMessage();
-            text.setText(name + "\n\n" + message);
+            header.setText(a.getName());
+            text.setText(a.getMessage());
+ 
+        }else{
+            header.setText("");
+            text.setText("");
         }
     }
 
@@ -66,7 +72,9 @@ public class DayController implements Initializable {
 
         HashMap<Integer, Course> map = ThisUser.getUser().getCourse();
         map.forEach((k, v) -> {
-            sub.getItems().add(v.getId() + "-" + v.getName());
+            if(v.getAnnounce().get(ThisUser.date())!=null){
+                sub.getItems().add(v.getId() + "-" + v.getName());
+            }
         });
     }
 

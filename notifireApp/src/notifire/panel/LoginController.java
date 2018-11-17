@@ -64,13 +64,26 @@ public class LoginController implements Initializable {
             //client.disconnect();
 
             Stage stage = (Stage) id.getScene().getWindow();
+<<<<<<< HEAD
             stage.setResizable(false);
             Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
 
             //create a new scene with root and set the stage
+=======
+            if( ThisUser.type().equals("Admin") ){Parent root = FXMLLoader.load(getClass().getResource("admin_home.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.show();
+            stage.show();}
+            
+            else{ Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+>>>>>>> noobcode
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();}
+           
+
+            //create a new scene with root and set the stage
+            
         }
         else if(res.equals("incorrect")){
             id.setText("");

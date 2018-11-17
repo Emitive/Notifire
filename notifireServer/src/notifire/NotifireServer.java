@@ -11,14 +11,39 @@ public class NotifireServer {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Data data = Data.getData();
+<<<<<<< HEAD
         data.addTeacher(555, "555","kan", "k.iamthammaarak@hotmail.com");
+=======
+        data.addStudent(123, "qwerty", "qwerty-san", "gg@gg.gg");
+        data.addTeacher(1, "onepunch", "saitama", "dead@gg.ez");
+        data.addStudent(59010093, "karnnumart", "karnnumart INW ZA", "k.iamthammarak@hotmail.com");
+        data.addStudent(59010401, "Nattakitt", "Thetin", "rumatoijap@gmail.com");
+        data.addStudent(999, "999", "I've got 99 Problems and the Bitch ain't one", "bitchAint1@gg.ez");
+        data.addTeacher(555, "555", "sensei", "k.iamthammarak@hotmail.com");
+        Data d = Data.getData();
+>>>>>>> noobcode
         data.addCurriculum(1, "CE");
         data.addCourse(1, "se", LocalDateTime.of(2018,10,23,13,00), 3, 20, 1);
         data.addCourse(2, "oo", LocalDateTime.of(2018,10,22,9,00), 3, 20, 1);
         data.addCourse(3, "ToC", LocalDateTime.of(2018,10,20,9,00), 3, 20, 1);
         data.getUser(555).addCourse(data.getCourse(1));
+<<<<<<< HEAD
         data.getUser(555).addCourse(data.getCourse(2));
         data.getUser(555).addCourse(data.getCourse(3));
+=======
+        data.getCourse(1).addMember(data.getUser(555));
+        data.getCourse(1).addMember(data.getUser(123));
+        data.getCourse(1).addMember(data.getUser(1));
+        data.getCourse(1).addMember(data.getUser(999));
+        data.getCourse(1).addMember(data.getUser(59010093));
+        data.getCourse(1).addMember(data.getUser(59010401));
+        data.getUser(555).setEmail("555", "k.iamthammarak@hotmail.com");
+        data.addAdmin(111, "111", "admin", "admin@nail");
+
+
+        d.saveData();
+
+>>>>>>> noobcode
         Server sv = new Server(5000);
  
         while (true) {
@@ -74,6 +99,7 @@ public class NotifireServer {
                 int id = (int) sv.fromClient(); //#2 course ID
                 LocalDateTime date = (LocalDateTime) sv.fromClient(); //#3 date
                 data.getCourse(id).makeUp(date);
+                data.sendMail(id," makeup class : "+data.getCourse(id).getName() , data.getCourse(id).getName() + "Has makeup class on " + date+ data,LocalDate.now()); //send mail request
             } //----------------------------Teacher/Student------------------------------------------               
             else if (m.equals("joinCourse")) {// Join a Course
                 int userId = (int) sv.fromClient(); // #2 User ID
@@ -116,11 +142,20 @@ public class NotifireServer {
                 sv.toClient("incorrect");
             }
             sv.toClient("done");
+<<<<<<< HEAD
             System.out.println("I  want to close");
             System.out.println(LocalDateTime.now());
             data.saveData();
         }
         
+=======
+            sv.fromClient();
+            data.saveData();
+            
+            
+        }
+            
+>>>>>>> noobcode
     }
 
 }

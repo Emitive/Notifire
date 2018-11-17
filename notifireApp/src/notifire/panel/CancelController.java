@@ -41,18 +41,22 @@ public class CancelController implements Initializable {
     private TextArea text;
     @FXML
     private ComboBox<String> sub;
-    @FXML DatePicker dp;
-    @FXML Button cancel ;
+    @FXML
+    DatePicker dp;
+    @FXML
+    Button cancel;
+
     @FXML
     private void OK() throws IOException, ClassNotFoundException {
-        String[] part = sub.getSelectionModel().getSelectedItem().split("-");
-        int courseId = Integer.parseInt(part[0]);
-        System.out.println(courseId);
-        Teacher t = (Teacher)ThisUser.getUser();
-        t.cancel(courseId, dp.getValue());
-
-        linkTo("Home");
-
+        if (sub.getSelectionModel().getSelectedItem().contains("-") && dp.getValue() != null) {
+            ThisUser.update(true);
+            String[] part = sub.getSelectionModel().getSelectedItem().split("-");
+            int courseId = Integer.parseInt(part[0]);
+            System.out.println(courseId);
+            Teacher t = (Teacher) ThisUser.getUser();
+            t.cancel(courseId, dp.getValue());
+            linkTo("Home");
+        }
     }
 
     @Override

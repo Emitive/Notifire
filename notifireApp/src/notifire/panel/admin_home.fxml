@@ -25,6 +25,6 @@
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="logout" layoutX="502.0" layoutY="348.0" mnemonicParsing="false" onAction="#cancel" text="Logout" />
+      <Button fx:id="logout" layoutX="502.0" layoutY="348.0" mnemonicParsing="false" onAction="#out" text="Logout" />
    </children>
 </AnchorPane>

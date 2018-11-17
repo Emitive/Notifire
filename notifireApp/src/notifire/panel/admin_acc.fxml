@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.Admin_accController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.Admin_accController">
    <children>
       <Button fx:id="cancel" layoutX="517.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
       <Button layoutX="439.0" layoutY="352.0" mnemonicParsing="false" text="Submit" />

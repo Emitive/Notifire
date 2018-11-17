@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import notifire.ThisUser;
 
@@ -30,11 +31,13 @@ public class AnchorPaneNode extends AnchorPane {
     public AnchorPaneNode(Node... children) {
         super(children);
         // Add action handler for mouse clicked
-        this.setStyle("-fx-background-color: #c5d9e5; -fx-border-color: #000000");
+        this.setMinSize(100, 82);
+        this.setMaxSize(100, 82);
+        this.setColor("#1c1c1c","#ff3419");
         this.setOnMouseClicked(e ->{ ThisUser.setDate(this.date);});
-        this.setOnMouseEntered(e ->{ this.setStyle("-fx-background-color: #16a9ff; -fx-border-color: #000000"); });
-        this.setOnMouseExited(e ->{ this.setStyle("-fx-background-color:  #c5d9e5; -fx-border-color: #100000"); });
-       
+        this.setOnMouseEntered(e -> this.highlight());
+        this.setOnMouseExited(e -> this.setColor("#1c1c1c","#ff3419"));
+
     }
     
      private void linkTo(String s) throws IOException {
@@ -51,4 +54,12 @@ public class AnchorPaneNode extends AnchorPane {
         this.date = date;
     }
     
+    public void setColor(String bg,String bd){
+        this.setStyle("-fx-background-color: " + bg +"; -fx-border-color: "+ bd);
+
+    }
+    public void highlight(){
+        this.setStyle("-fx-background-color: #555555;");
+    }
+
 }

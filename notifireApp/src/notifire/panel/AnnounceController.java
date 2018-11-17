@@ -34,36 +34,47 @@ import notifire.*;
  */
 public class AnnounceController implements Initializable {
 
-    @FXML private AnchorPane ap;
-    @FXML private TextField head;
-    @FXML private TextArea text;
-    @FXML private ComboBox <String> sub;
-    
-    @FXML private void OK() throws IOException, ClassNotFoundException{
-        String[] part = sub.getSelectionModel().getSelectedItem().split("-");
-        int courseId = Integer.parseInt(part[0]);
+    @FXML
+    private AnchorPane ap;
+    @FXML
+    private TextField head;
+    @FXML
+    private TextArea text;
+    @FXML
+    private ComboBox<String> sub;
 
-        Teacher t = (Teacher)ThisUser.getUser();
-        t.announce(courseId, head.getText(), text.getText());
-        
-        linkTo("Home");
+    @FXML
+    private void OK() throws IOException, ClassNotFoundException {
+        if (sub.getSelectionModel().getSelectedItem().contains("-")) {
+            ThisUser.update(true);
+            String[] part = sub.getSelectionModel().getSelectedItem().split("-");
+            int courseId = Integer.parseInt(part[0]);
+
+            Teacher t = (Teacher) ThisUser.getUser();
+            t.announce(courseId, head.getText(), text.getText());
+
+            linkTo("Home");
+        }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadData();
         // TODO
     }
-    private void loadData(){
-        
-        HashMap<Integer,Course> map = ThisUser.getUser().getCourse();
-        map.forEach((k,v)-> sub.getItems().add(v.getId() +"-"+ v.getName()) );
+
+    private void loadData() {
+
+        HashMap<Integer, Course> map = ThisUser.getUser().getCourse();
+        map.forEach((k, v) -> sub.getItems().add(v.getId() + "-" + v.getName()));
 
     }
+
     private void linkTo(String s) throws IOException {
         Scene sc = ap.getScene();
         Parent root = FXMLLoader.load(getClass().getResource(s + ".fxml"));
         sc.setRoot(root);
-        
+
     }
 
 }

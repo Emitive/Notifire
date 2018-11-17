@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -27,9 +28,14 @@ public class Admin_homeController implements Initializable {
     @FXML private Button acc;
     @FXML private Button cu;
     @FXML private Button cr;
-    @FXML
-    private void cancel() throws IOException{
-         linkTo("Home");
+     @FXML
+    private void out() throws IOException {
+        Stage stage = (Stage) ap.getScene().getWindow();
+        stage.setResizable(false);
+        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     @FXML
     private void acc() throws IOException{

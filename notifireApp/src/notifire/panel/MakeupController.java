@@ -36,42 +36,62 @@ import notifire.ThisUser;
 public class MakeupController implements Initializable {
 
     ObservableList list = FXCollections.observableArrayList();
-    @FXML private AnchorPane ap;
-    @FXML private TextArea text;
-    @FXML private ComboBox <String> sub;
-    @FXML private DatePicker dp;
-    @FXML private TextField time;
-    
-    @FXML private void OK() throws IOException, ClassNotFoundException{
-       linkTo("Home");
-        //int courseiD = sub.get
-        String[] part = sub.getSelectionModel().getSelectedItem().split("-");
-        int courseId = Integer.parseInt(part[0]);
-        System.out.println(courseId);
-        String[] times = time.getText().split(":");
-        int hour = Integer.parseInt(times[0]);
-        int minute = Integer.parseInt(times[1]);
-        Teacher t = (Teacher)ThisUser.getUser();
-        t.makeUp(courseId, dp.getValue().atTime(hour, minute));
-        
+    @FXML
+    private AnchorPane ap;
+    @FXML
+    private TextArea text;
+    @FXML
+    private ComboBox<String> sub;
+    @FXML
+    private DatePicker dp;
+    @FXML
+    private TextField time;
+
+    @FXML
+    private void OK() throws IOException, ClassNotFoundException {
+
+        ThisUser.update(true);
+        //int courseiD = sub.get        
+        if (sub.getSelectionModel().getSelectedItem().contains("-") && dp.getValue()!=null) {
+            String[] part = sub.getSelectionModel().getSelectedItem().split("-");
+            int courseId = Integer.parseInt(part[0]);
+            System.out.println(courseId);
+            String[] times = time.getText().split(":");
+            try{
+                int hour = Integer.parseInt(times[0]);
+                int minute = Integer.parseInt(times[1]);
+                if (hour > 0 && hour < 24 && minute > 0 && minute < 60) {
+                Teacher t = (Teacher) ThisUser.getUser();
+                t.makeUp(courseId, dp.getValue().atTime(hour, minute));
+                linkTo("Home");
+                return;
+            }
+            }catch(NumberFormatException e){
+                System.out.println("time format error");
+            }
+        }
+        time.setText("");
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadData();
         // TODO
     }
-    private void loadData(){
-       list.removeAll(list);
-        HashMap<Integer,Course> map = ThisUser.getUser().getCourse();
-        
-        map.forEach((k,v)->list.addAll(v.getId() +"-"+ v.getName()));
+
+    private void loadData() {
+        list.removeAll(list);
+        HashMap<Integer, Course> map = ThisUser.getUser().getCourse();
+
+        map.forEach((k, v) -> list.addAll(v.getId() + "-" + v.getName()));
         sub.getItems().addAll(list);
     }
+
     private void linkTo(String s) throws IOException {
         Scene sc = ap.getScene();
         Parent root = FXMLLoader.load(getClass().getResource(s + ".fxml"));
         sc.setRoot(root);
-        
+
     }
-    
+
 }

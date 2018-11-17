@@ -37,34 +37,34 @@ public class Data implements Serializable { // We create/access everything here.
 
     public boolean addStudent(int id, String pass, String name, String email) {
         if (user.containsKey(id)) { //id exist?
-            System.out.println("id exist" + id);
+            //System.out.println("id exist" + id);
             return false;//yes
         }
         Student s = new Student(id, pass, name, email); //create instance
         user.put(id, s); //put in Map
-        System.out.println("student added" + id + name);
+        //System.out.println("student added" + id + name);
         return true;
     }
 
     public boolean addTeacher(int id, String pass, String name, String email) {
         if (user.containsKey(id)) {
-            System.out.println("teacher exist" + id);
+            //System.out.println("teacher exist" + id);
             return false;
         }
         Teacher t = new Teacher(id, pass, name, email);
         user.put(id, t);
-        System.out.println("teacher added" + id + name);
+        //System.out.println("teacher added" + id + name);
         return true;
     }
 
     public boolean addAdmin(int id, String pass, String name, String email) {
         if (user.containsKey(id)) {
-            System.out.println("admin exist" + id);
+            //System.out.println("admin exist" + id);
             return false;
         }
         Admin t = new Admin(id, pass, name, email);
         user.put(id, t);
-        System.out.println("admin added" + id + name);
+        //System.out.println("admin added" + id + name);
         return true;
     }
 

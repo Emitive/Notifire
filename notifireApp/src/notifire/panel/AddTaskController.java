@@ -37,50 +37,62 @@ import notifire.ThisUser;
  * @author WIN 7
  */
 public class AddTaskController implements Initializable {
-ObservableList list = FXCollections.observableArrayList();
+
+    ObservableList list = FXCollections.observableArrayList();
     /**
      * Initializes the controller class.
      */
     @FXML
     private Button ok;
-    @FXML private ComboBox <String> sub;
-    @FXML private DatePicker dp;
-    @FXML private TextField time;
-    @FXML private AnchorPane ap;
-     @FXML private TextArea text;
+    @FXML
+    private ComboBox<String> sub;
+    @FXML
+    private DatePicker dp;
+    @FXML
+    private TextField time;
+    @FXML
+    private AnchorPane ap;
+    @FXML
+    private TextArea text;
 
     @FXML
-    void OK() throws IOException,ClassNotFoundException {
+    void OK() throws IOException, ClassNotFoundException {
         
-        String[] part = sub.getSelectionModel().getSelectedItem().split("-");
-        int courseId = Integer.parseInt(part[0]);
-        Teacher t = (Teacher)ThisUser.getUser();
-        t.addTask(courseId,time.getText(),text.getText() ,dp.getValue());
-        System.out.println("deadline: " + dp.getValue().toString());
-        linkTo("Home");
+        if (sub.getSelectionModel().getSelectedItem().contains("-") && dp.getValue()!=null) {
+            ThisUser.update(true);
+            String[] part = sub.getSelectionModel().getSelectedItem().split("-");
+            int courseId = Integer.parseInt(part[0]);
+            Teacher t = (Teacher) ThisUser.getUser();
+            t.addTask(courseId, time.getText(), text.getText(), dp.getValue());
+            System.out.println("deadline: " + dp.getValue().toString());
+            linkTo("Home");
+        }
     }
-    
+
     @FXML
     void getDate() {
         Calendar c = GregorianCalendar.from(dp.getValue().atStartOfDay(ZoneId.systemDefault()));
         System.out.println(c.getTime());
     }
-    private void loadData(){
+
+    private void loadData() {
         list.removeAll(list);
-        HashMap<Integer,Course> map = ThisUser.getUser().getCourse();
-        
-        map.forEach((k,v)->list.addAll(v.getId() +"-"+ v.getName()));
+        HashMap<Integer, Course> map = ThisUser.getUser().getCourse();
+
+        map.forEach((k, v) -> list.addAll(v.getId() + "-" + v.getName()));
         sub.getItems().addAll(list);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      loadData();
+        loadData();
     }
-     private void linkTo(String s) throws IOException {
+
+    private void linkTo(String s) throws IOException {
         Scene sc = ap.getScene();
         Parent root = FXMLLoader.load(getClass().getResource(s + ".fxml"));
         sc.setRoot(root);
-        
+
     }
 
 }

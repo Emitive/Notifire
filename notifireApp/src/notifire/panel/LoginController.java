@@ -26,7 +26,8 @@ import notifire.User;
  * @author WIN 7
  */
 public class LoginController implements Initializable {
-     Client client;
+
+    Client client;
     /**
      * Initializes the controller class.
      */
@@ -38,9 +39,9 @@ public class LoginController implements Initializable {
     @FXML
     public void login() throws IOException, ClassNotFoundException {
         int d;
-        try{
+        try {
             d = Integer.parseInt(id.getText());
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             id.setText("");
             return;
         }
@@ -48,48 +49,30 @@ public class LoginController implements Initializable {
         client.toServer("login");
         client.toServer(d);
         client.toServer(pass.getText());
-        String res =  (String)client.fromServer();
+        String res = (String) client.fromServer();
         System.out.println(res);
         if (res.equals("correct")) {
             ThisUser.setUser((User) client.fromServer());
+
             client.disconnect();
-            String time = "Morning ";
-            if(LocalTime.now().isAfter(LocalTime.NOON)){
-                time = "Afternoon ";
-            }if(LocalTime.now().isAfter(LocalTime.of(18, 0))){
-                time = "Evening ";
-            }
-            System.out.println("Type: " + ThisUser.getUser().getClass());
-            System.out.println("Good " + time + ThisUser.getUser().getName() +", how can I help you.");
-            //client.disconnect();
-
+            ThisUser.update(false);
+            
             Stage stage = (Stage) id.getScene().getWindow();
-<<<<<<< HEAD
             stage.setResizable(false);
-            Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
-
-            //create a new scene with root and set the stage
-=======
-            if( ThisUser.type().equals("Admin") ){Parent root = FXMLLoader.load(getClass().getResource("admin_home.fxml"));
+            String home = "Home.fxml";
+            if (ThisUser.type().equals("Admin")) {
+                home = "admin_home.fxml";
+            }
+            Parent root = FXMLLoader.load(getClass().getResource(home));
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.show();}
-            
-            else{ Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
->>>>>>> noobcode
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();}
-           
-
+            stage.show();
             //create a new scene with root and set the stage
-            
-        }
-        else if(res.equals("incorrect")){
+        } else if (res.equals("incorrect")) {
             id.setText("");
             pass.setText("");
         }
-        
+
     }
 
     @Override
@@ -98,6 +81,5 @@ public class LoginController implements Initializable {
         System.out.println("init completed");
         // TODO
     }
-
 
 }

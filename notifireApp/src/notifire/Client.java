@@ -44,8 +44,8 @@ public class Client {
     public void disconnect() throws ClassNotFoundException {
         try {
             fromServer();
-            System.out.println("server want to close");
-            System.out.println(LocalDateTime.now());
+            System.out.println("server want to close @ ");
+            System.out.print(LocalDateTime.now());
             in.close();
             out.close();
             socket.close();

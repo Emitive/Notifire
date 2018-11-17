@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 
 public class ThisUser{
+    static private boolean update;
+    static private int id;
     static private User u = null;
     static private String type = null;
     static private LocalDate date = LocalDate.now();
@@ -20,8 +22,12 @@ public class ThisUser{
             type = "Admin";
         }
     }
+    
     static public User getUser(){
         return u;
+    }
+    static public int getId(){
+        return id;
     }
     static public String type(){
         return type;
@@ -31,5 +37,12 @@ public class ThisUser{
     }
     static public void setDate(LocalDate d){
         date = d;
+    }
+    static public void setId(int i){
+        id = i;
+    }static public boolean update(){
+        return update;
+    }static public void update(boolean b){
+        update = b;
     }
 }

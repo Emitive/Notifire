@@ -37,7 +37,7 @@ public class Admin_accController implements Initializable {
     @FXML private ComboBox role; 
     @FXML
     private void cancel() throws IOException{
-         linkTo("Home");
+         linkTo("admin_home");
     }
     @FXML
     private void acc() throws IOException{

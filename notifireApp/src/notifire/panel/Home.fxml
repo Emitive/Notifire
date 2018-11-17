@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,36 +7,37 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.HomeController">
    <children>
-      <SplitPane dividerPositions="0.7915831663326653" prefHeight="600.0" prefWidth="1000.0">
+      <SplitPane fx:id="sp" dividerPositions="0.779559118236473" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="1000.0">
         <items>
-          <AnchorPane fx:id="ap" minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="592.0">
+          <AnchorPane fx:id="ap" maxWidth="777.0" minWidth="777.0" prefHeight="598.0" prefWidth="777.0" style="-fx-background-color: #111111;">
                <children>
-                  <Pane fx:id="pane" layoutX="51.0" layoutY="58.0" onMouseClicked="#selectDate" prefHeight="526.0" prefWidth="777.0" />
-                  <Button layoutX="286.0" layoutY="21.0" mnemonicParsing="false" onAction="#previous" text="&lt;&lt;" />
-                  <Button layoutX="517.0" layoutY="21.0" mnemonicParsing="false" onAction="#next" text="&gt;&gt;" />
-                  <Text fx:id="date" layoutX="340.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Month" textAlignment="CENTER" wrappingWidth="164.13671875">
+                  <Pane fx:id="pane" layoutX="45.0" layoutY="83.0" maxHeight="492.0" maxWidth="700.0" minHeight="492.0" minWidth="700.0" onMouseClicked="#selectDate" />
+                  <Button layoutX="261.0" layoutY="24.0" mnemonicParsing="false" onAction="#previous" style="-fx-background-color: #ff4319; -fx-background-radius: 15;" text="&lt;" textAlignment="CENTER" />
+                  <Button layoutX="492.0" layoutY="24.0" mnemonicParsing="false" onAction="#next" style="-fx-background-color: #ff4319; -fx-background-radius: 15;" text="&gt;" textAlignment="CENTER" />
+                  <Text fx:id="date" fill="WHITE" layoutX="308.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Month" textAlignment="CENTER" wrappingWidth="164.13671875">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="name" layoutX="32.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="147.0000147819519">
+                  <Text fx:id="name" fill="WHITE" layoutX="32.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="147.0000147819519">
                      <font>
                         <Font size="18.0" />
-                     </font></Text>
-                  <Text fx:id="selected" layoutX="631.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="87.6708984375" />
-               </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="138.0" style="-fx-background-color: crimson;">
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="45.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sun                         Mon                       Tue                         Wed                       Thu                         Fri                         Sat" wrappingWidth="707.13671875" />
+               </children>
+            </AnchorPane>
+          <AnchorPane maxWidth="215.0" minHeight="0.0" minWidth="215.0" prefHeight="598.0" prefWidth="138.0" style="-fx-background-color: #ff3419;">
                <children>
-                  <Button fx:id="anc" layoutX="23.0" layoutY="47.0" mnemonicParsing="false" onAction="#announce" prefHeight="31.0" prefWidth="141.0" text="Announce" />
-                  <Button fx:id="task" layoutX="23.0" layoutY="108.0" mnemonicParsing="false" onAction="#addTask" prefHeight="31.0" prefWidth="141.0" text="Add Task" />
-                  <Button fx:id="makeUp" layoutX="23.0" layoutY="171.0" mnemonicParsing="false" onAction="#makeUp" prefHeight="31.0" prefWidth="141.0" text="Make up Course" />
-                  <Button layoutX="23.0" layoutY="237.0" mnemonicParsing="false" onAction="#cancel" prefHeight="31.0" prefWidth="141.0" text="Cancel Course" />
-                  <Button fx:id="join" layoutX="23.0" layoutY="300.0" mnemonicParsing="false" onAction="#joint" prefHeight="31.0" prefWidth="141.0" text="Join Course" />
-                  <Button fx:id="temp" layoutX="23.0" layoutY="357.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="141.0" text="Edit profile" />
-                  <Button fx:id="logout" layoutX="19.0" layoutY="544.0" mnemonicParsing="false" onAction="#out" prefHeight="31.0" prefWidth="141.0" text="Logout" />
-                  <Button fx:id="join1" layoutX="23.0" layoutY="47.0" mnemonicParsing="false" onAction="#joint" prefHeight="31.0" prefWidth="141.0" text="Join Course" />
+                  <Button fx:id="anc" layoutX="40.0" layoutY="144.0" mnemonicParsing="false" onAction="#announce" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Announce" textFill="#ff4319" />
+                  <Button fx:id="makeUp" layoutX="40.0" layoutY="268.0" mnemonicParsing="false" onAction="#makeUp" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Make up Course" textFill="#ff4319" />
+                  <Button fx:id="canc" layoutX="40.0" layoutY="334.0" mnemonicParsing="false" onAction="#cancel" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Cancel Course" textFill="#ff4319" />
+                  <Button fx:id="join" layoutX="40.0" layoutY="29.0" mnemonicParsing="false" onAction="#joint" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Join Course" textFill="#ff4319" />
+                  <Button fx:id="temp" layoutX="40.0" layoutY="86.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Edit profile" textFill="#ff4319" />
+                  <Button fx:id="logout" layoutX="40.0" layoutY="538.0" mnemonicParsing="false" onAction="#out" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Logout" textFill="#ff4319" />
+                  <Button fx:id="task" layoutX="40.0" layoutY="202.0" mnemonicParsing="false" onAction="#addTask" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Add Task" textFill="#ff4319" />
                </children>
             </AnchorPane>
         </items>

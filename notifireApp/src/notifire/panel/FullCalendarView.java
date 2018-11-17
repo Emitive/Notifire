@@ -25,6 +25,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import notifire.ThisUser;
 import notifire.*;
 import notifire.Course;
@@ -46,15 +48,13 @@ public class FullCalendarView {
         currentYearMonth = yearMonth;
         // Create the calendar grid pane
         GridPane calendar = new GridPane();
-        calendar.setPrefSize(730, 640);
-        calendar.setGridLinesVisible(true);
+        calendar.setMinSize(100*7, 82*6);
+        calendar.setMaxSize(100*7, 82*6);
 
         // Create rows and columns with anchor panes for the calendar
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 AnchorPaneNode ap = new AnchorPaneNode();
-                ap.setMinSize(100, 80);
-                ap.setMaxSize(100, 80);
                 calendar.add(ap, j, i);
                 allCalendarDays.add(ap);
 
@@ -64,29 +64,21 @@ public class FullCalendarView {
         Text[] dayNames = new Text[]{new Text("Sunday"), new Text("Monday"), new Text("Tuesday"),
             new Text("Wednesday"), new Text("Thursday"), new Text("Friday"),
             new Text("Saturday")};
+        
         GridPane dayLabels = new GridPane();
         dayLabels.setPrefWidth(725);
         Integer col = 0;
         for (Text txt : dayNames) {
             AnchorPane ap = new AnchorPane();
             ap.setPrefSize(200, 0);
-            ap.setLeftAnchor(txt, 2.0);
-            ap.setTopAnchor(txt, 2.0);
+            ap.setLeftAnchor(txt, 0.0);
+            ap.setTopAnchor(txt, 0.0);
+            txt.setFill(Color.CORNSILK);
             ap.getChildren().add(txt);
             dayLabels.add(ap, col++, 0);
         }
         // Create calendarTitle and buttons to change current month
 
-        calendarTitle = new Text();
-
-        Button previousMonth = new Button("<<");
-        previousMonth.setOnAction(e -> previousMonth());
-        Button nextMonth = new Button(">>");
-        nextMonth.setOnAction(e -> nextMonth());
-
-        HBox titleBar = new HBox(previousMonth, calendarTitle, nextMonth);
-
-        titleBar.setAlignment(Pos.BASELINE_CENTER);
 
         // Populate calendar with the appropriate day numbers
         populateCalendar(yearMonth);
@@ -115,16 +107,21 @@ public class FullCalendarView {
                 ap.getChildren().clear();
             }
             Text txt = new Text(String.valueOf(calendarDate.getDayOfMonth()));
-
+            if(calendarDate.getMonthValue() == yearMonth.getMonthValue()){
+                txt.setFill(Color.WHITESMOKE);
+            }else{
+                txt.setFill(Paint.valueOf("#4c4c4c"));
+            }
+                
             ap.setDate(calendarDate);
-            ap.setTopAnchor(txt, 10.0);
+            ap.setTopAnchor(txt, 1.0);
             ap.setLeftAnchor(txt, 1.0);
             ap.getChildren().add(txt);
 
             calendarDate = calendarDate.plusDays(1);
         }
         // Change the title of the calendar
-        calendarTitle.setText(yearMonth.getMonth().toString() + " " + String.valueOf(yearMonth.getYear()));
+       
         //----- loop 
         HashMap<Integer, Course> map = ThisUser.getUser().getCourse();
         for (HashMap.Entry<Integer, Course> course : map.entrySet()) {
@@ -142,18 +139,23 @@ public class FullCalendarView {
 
     public void setDayText(LocalDate d, String s) {
         // Get the date we want to start with on the calendar
+        System.out.println("announce month: "+ d.getMonthValue());
+         System.out.println("celandar month: " + currentYearMonth.getMonthValue());
         if (d.getMonthValue() == currentYearMonth.getMonthValue()) {
             LocalDate firstDay = d.of(d.getYear(), d.getMonth(), 1);
             int offset = firstDay.getDayOfWeek().getValue(); //monday = 1; sunday = 7
-            System.out.println("offset " + (d.getDayOfMonth() + offset - 1));
-            System.out.println("date: " + d);
+
             AnchorPane ap = allCalendarDays.get(d.getDayOfMonth() + offset - 1);
 
             Text txt = new Text(s);
+            if(d.getMonthValue() == currentYearMonth.getMonthValue()){
+                txt.setFill(Color.WHITESMOKE);
+            }else{
+                txt.setFill(Paint.valueOf("#555555"));
+            }
             ap.setBottomAnchor(txt, 1.0);
             ap.setRightAnchor(txt, 1.0);
             ap.getChildren().add(txt);
-            System.out.println(ap.getChildren().toString());
         }else{
             //System.out.println("outer date: - " + d +" - "+ s);
         }
@@ -174,7 +176,7 @@ public class FullCalendarView {
      * dates.
      */
     public String getMonth() {
-        return calendarTitle.getText();
+        return currentYearMonth.getMonth().toString() +" "+ currentYearMonth.getYear();
     }
 
     public void nextMonth() {

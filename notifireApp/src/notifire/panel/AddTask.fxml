@@ -14,12 +14,12 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.AddTaskController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.AddTaskController">
    <children>
-      <Button fx:id="ok" layoutX="900.0" layoutY="500.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="58.0" text="OK" />
+      <Button fx:id="ok" layoutX="900.0" layoutY="500.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="58.0" text="OK" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" />
       <DatePicker fx:id="dp" editable="false" layoutX="220.0" layoutY="63.0" onAction="#getDate" promptText="pick deadline" />
       <TextArea fx:id="text" layoutX="75.0" layoutY="155.0" prefHeight="328.0" prefWidth="851.0" promptText="task detail" />
-      <Text layoutX="48.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Task" wrappingWidth="116.609375">
+      <Text layoutX="48.0" layoutY="40.0" fill="#ff3419" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Task" wrappingWidth="116.609375">
          <font>
             <Font size="24.0" />
          </font>

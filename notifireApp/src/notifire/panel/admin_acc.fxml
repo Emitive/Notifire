@@ -7,36 +7,36 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.Admin_accController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" style="-fx-background-color: #111111;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.Admin_accController">
    <children>
-      <Button fx:id="cancel" layoutX="517.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
-      <Button layoutX="439.0" layoutY="352.0" mnemonicParsing="false" text="Submit" />
+      <Button fx:id="cancel" layoutX="517.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Cancel" />
+      <Button layoutX="439.0" layoutY="352.0" mnemonicParsing="false" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Submit" />
       <ComboBox fx:id="role" editable="true" layoutX="174.0" layoutY="308.0" prefHeight="43.0" prefWidth="168.0" promptText="Select" />
       <TextField fx:id="name" layoutX="178.0" layoutY="247.0" prefHeight="43.0" prefWidth="295.0" />
       <TextField fx:id="email" layoutX="174.0" layoutY="179.0" prefHeight="43.0" prefWidth="295.0" />
       <TextField fx:id="pass" layoutX="238.0" layoutY="110.0" prefHeight="43.0" prefWidth="231.0" />
       <TextField fx:id="id" layoutX="135.0" layoutY="44.0" prefHeight="43.0" prefWidth="187.0" />
-      <Text layoutX="61.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role :">
+      <Text layoutX="61.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" fill="WHITE" text="Role :">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="61.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :">
+      <Text layoutX="61.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" fill="WHITE" text="Email :">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="61.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :">
+      <Text layoutX="61.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" fill="WHITE" text="Password :">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="61.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+      <Text layoutX="61.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" fill="WHITE" text="Name :">
          <font>
             <Font size="36.0" />
          </font>
       </Text>
-      <Text layoutX="65.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID :">
+      <Text layoutX="65.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" fill="WHITE" text="ID :">
          <font>
             <Font size="36.0" />
          </font>

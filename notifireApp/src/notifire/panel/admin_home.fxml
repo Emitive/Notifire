@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="notifire.panel.Admin_homeController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.Admin_homeController">
    <children>
-      <Button fx:id="acc" layoutX="155.0" layoutY="49.0" mnemonicParsing="false" onAction="#acc" prefHeight="77.0" prefWidth="292.0" text="Add account">
+      <Button fx:id="acc" layoutX="155.0" layoutY="49.0" mnemonicParsing="false" onAction="#acc" prefHeight="77.0" prefWidth="292.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Add account" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="cr" layoutX="155.0" layoutY="150.0" mnemonicParsing="false" onAction="#cr" prefHeight="77.0" prefWidth="292.0" text="Add course">
+      <Button fx:id="course" layoutX="155.0" layoutY="150.0" mnemonicParsing="false" onAction="#cr" prefHeight="77.0" prefWidth="292.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Add course" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="cu" layoutX="155.0" layoutY="260.0" mnemonicParsing="false" onAction="#cu" text="Add curriculum">
+      <Button fx:id="cu" layoutX="155.0" layoutY="260.0" mnemonicParsing="false" onAction="#cu" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Add curriculum" textFill="WHITE">
          <font>
             <Font size="36.0" />
          </font>
       </Button>
-      <Button fx:id="logout" layoutX="502.0" layoutY="348.0" mnemonicParsing="false" onAction="#out" text="Logout" />
+      <Button fx:id="logout" layoutX="502.0" layoutY="348.0" mnemonicParsing="false" onAction="#out" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Logout" textFill="WHITE" />
    </children>
 </AnchorPane>

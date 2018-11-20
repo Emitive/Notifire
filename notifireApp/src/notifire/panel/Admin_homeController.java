@@ -27,7 +27,7 @@ public class Admin_homeController implements Initializable {
     @FXML private Button logout;
     @FXML private Button acc;
     @FXML private Button cu;
-    @FXML private Button cr;
+    @FXML private Button course;
      @FXML
     private void out() throws IOException {
         Stage stage = (Stage) ap.getScene().getWindow();
@@ -47,7 +47,7 @@ public class Admin_homeController implements Initializable {
     }
     @FXML
     private void cr() throws IOException{
-         linkTo("admin_cr");
+         linkTo("admin_course");
     }
     /**
      * Initializes the controller class.

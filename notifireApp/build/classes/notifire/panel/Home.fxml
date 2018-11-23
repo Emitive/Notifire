@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.HomeController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.HomeController">
    <children>
       <SplitPane fx:id="sp" dividerPositions="0.779559118236473" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="1000.0">
         <items>
@@ -35,7 +35,7 @@
                   <Button fx:id="makeUp" layoutX="40.0" layoutY="268.0" mnemonicParsing="false" onAction="#makeUp" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Make up Course" textFill="#ff4319" />
                   <Button fx:id="canc" layoutX="40.0" layoutY="334.0" mnemonicParsing="false" onAction="#cancel" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Cancel Course" textFill="#ff4319" />
                   <Button fx:id="join" layoutX="40.0" layoutY="29.0" mnemonicParsing="false" onAction="#joint" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Join Course" textFill="#ff4319" />
-                  <Button fx:id="temp" layoutX="40.0" layoutY="86.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Edit profile" textFill="#ff4319" />
+                  <Button fx:id="temp" layoutX="40.0" layoutY="86.0" mnemonicParsing="false" onAction="#Profile" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Profile" textFill="#ff4319" />
                   <Button fx:id="logout" layoutX="40.0" layoutY="538.0" mnemonicParsing="false" onAction="#out" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Logout" textFill="#ff4319" />
                   <Button fx:id="task" layoutX="40.0" layoutY="202.0" mnemonicParsing="false" onAction="#addTask" prefHeight="31.0" prefWidth="141.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" text="Add Task" textFill="#ff4319" />
                </children>

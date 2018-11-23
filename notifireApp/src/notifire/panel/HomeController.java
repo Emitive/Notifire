@@ -118,6 +118,12 @@ public class HomeController implements Initializable {
         linkTo("Day");
 
     }
+     @FXML
+    private void Profile() throws IOException {
+        //selected.setText(ThisUser.date().toString());
+        linkTo("profile");
+
+    }
 
     @FXML
     private void addTask() throws IOException {

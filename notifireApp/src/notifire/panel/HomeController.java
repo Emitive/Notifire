@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +28,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import notifire.Client;
+import notifire.Course;
 import notifire.ThisUser;
 import notifire.User;
 
@@ -115,8 +117,18 @@ public class HomeController implements Initializable {
     @FXML
     private void selectDate() throws IOException {
         //selected.setText(ThisUser.date().toString());
-        linkTo("Day");
-
+        HashMap<Integer, Course> map = ThisUser.getUser().getCourse();
+        
+        map.forEach((k, v) -> {
+            System.out.println("Wow");
+            if(v.getAnnounce().get(ThisUser.date())!=null){
+                try {
+                    linkTo("Day");
+                } catch (IOException ex) {
+                    Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }
      @FXML
     private void Profile() throws IOException {
@@ -145,7 +157,7 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        fv = new FullCalendarView(YearMonth.now());
+        fv = new FullCalendarView(ThisUser.ym);
         ObservableList<Node> n = fv.getView().getChildren();
         date.setText(fv.getMonth());
   

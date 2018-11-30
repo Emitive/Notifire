@@ -10,14 +10,24 @@
 
 <AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.MakeupController">
    <children>
-      <Button layoutX="900.0" layoutY="500.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="64.0" text="OK" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" />
-      <Text layoutX="50.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" fill="#ff3419" text="Make Up" wrappingWidth="116.609375">
+      <Button layoutX="900.0" layoutY="500.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="OK" />
+      <Text fill="#ff3419" layoutX="50.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make Up" wrappingWidth="116.609375">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <DatePicker fx:id="dp" editable="false" layoutX="255.0" layoutY="105.0" promptText="make up date" />
-      <ComboBox fx:id="sub" layoutX="50.0" layoutY="105.0" prefWidth="150.0" promptText="select subject" />
-      <TextField fx:id="time" layoutX="479.0" layoutY="105.0" promptText="hh:mm" />
+      <DatePicker fx:id="dp" editable="false" layoutX="411.0" layoutY="353.0" onAction="#setPercent" prefHeight="25.0" prefWidth="188.0" promptText="make up date" />
+      <ComboBox fx:id="sub" layoutX="166.0" layoutY="353.0" onAction="#setPercent" prefWidth="150.0" promptText="select subject" />
+      <TextField fx:id="time" layoutX="702.0" layoutY="353.0" onKeyReleased="#setPercent" promptText="hh.mm" />
+      <Text fill="WHITE" layoutX="260.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="of Students can attend at this Make-up Course">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fx:id="percent" fill="WHITE" layoutX="191.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\%" textAlignment="RIGHT">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

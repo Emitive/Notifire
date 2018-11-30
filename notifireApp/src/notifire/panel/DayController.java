@@ -10,6 +10,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,7 +42,6 @@ public class DayController implements Initializable {
     @FXML
     private TextArea text;
     @FXML private TextField header;
-
     /**
      * Initializes the controller class.
      */
@@ -68,20 +69,26 @@ public class DayController implements Initializable {
         }
     }
 
-    private void loadData() {
-
+    private void loadData() throws IOException {
         HashMap<Integer, Course> map = ThisUser.getUser().getCourse();
+        
         map.forEach((k, v) -> {
             if(v.getAnnounce().get(ThisUser.date())!=null){
                 sub.getItems().add(v.getId() + "-" + v.getName());
             }
         });
+        sub.getSelectionModel().selectFirst();
+        selectSub();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         date.setText(ThisUser.date().toString());
-        loadData();
+        try {
+            loadData();
+        } catch (IOException ex) {
+            Logger.getLogger(DayController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void linkTo(String s) throws IOException {

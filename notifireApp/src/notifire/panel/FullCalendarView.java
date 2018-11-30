@@ -139,15 +139,22 @@ public class FullCalendarView {
 
     public void setDayText(LocalDate d, String s) {
         // Get the date we want to start with on the calendar
-        System.out.println("announce month: "+ d.getMonthValue());
-         System.out.println("celandar month: " + currentYearMonth.getMonthValue());
         if (d.getMonthValue() == currentYearMonth.getMonthValue()) {
             LocalDate firstDay = d.of(d.getYear(), d.getMonth(), 1);
             int offset = firstDay.getDayOfWeek().getValue(); //monday = 1; sunday = 7
-
+  
             AnchorPane ap = allCalendarDays.get(d.getDayOfMonth() + offset - 1);
-
-            Text txt = new Text(s);
+            String an ="";
+            if(ap.getChildren().size()>1){//concat
+                Text tx = (Text)ap.getChildren().get(1);
+                an = tx.getText() + "," + s;
+            }else{//new
+                an = s;
+            }
+            if(an.length()>11){
+                an = an.substring(0,8) + " . . . ";
+            }
+            Text txt = new Text(an);
             if(d.getMonthValue() == currentYearMonth.getMonthValue()){
                 txt.setFill(Color.WHITESMOKE);
             }else{
@@ -156,6 +163,7 @@ public class FullCalendarView {
             ap.setBottomAnchor(txt, 1.0);
             ap.setRightAnchor(txt, 1.0);
             ap.getChildren().add(txt);
+            
         }else{
             //System.out.println("outer date: - " + d +" - "+ s);
         }
@@ -167,7 +175,9 @@ public class FullCalendarView {
      * dates.
      */
     public void previousMonth() {
+
         currentYearMonth = currentYearMonth.minusMonths(1);
+        ThisUser.ym = currentYearMonth;
         populateCalendar(currentYearMonth);
     }
 
@@ -181,6 +191,7 @@ public class FullCalendarView {
 
     public void nextMonth() {
         currentYearMonth = currentYearMonth.plusMonths(1);
+        ThisUser.ym = currentYearMonth;
         populateCalendar(currentYearMonth);
     }
 

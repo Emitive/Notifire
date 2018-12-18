@@ -58,7 +58,10 @@ public class CancelController implements Initializable {
             linkTo("Home");
         }
     }
-
+    @FXML
+    private void cancel() throws IOException, ClassNotFoundException {       
+            linkTo("Home");        
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadData();

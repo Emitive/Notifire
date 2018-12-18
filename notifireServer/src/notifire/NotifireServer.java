@@ -11,22 +11,7 @@ public class NotifireServer {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Data data = Data.getData();
-        data.addCurriculum(1, "CE");
-        data.addCourse(0, "OOAD", LocalDateTime.of(2018, 9, 11, 9, 0), 3, 20, 1);
-        data.addCourse(1, "SE", LocalDateTime.of(2018, 9, 12, 9, 0), 3, 20, 1);
-        data.addCourse(2, "ComArch", LocalDateTime.of(2018, 9, 12, 13, 0), 3, 20, 1);
-        data.addCourse(3, "ToC", LocalDateTime.of(2018, 9, 14, 13, 0), 3, 20, 1);
-        for (int i = 1; i < 10000; i++) {
-            if (i < 100) {
-                data.addTeacher(i, String.valueOf(i), String.valueOf(i), "mail@mail.com");
-            } else {
-                data.addStudent(i, String.valueOf(i), String.valueOf(i), "mail@mail.com");
-            }
-            data.getUser(i).addCourse(data.getCourse(0));
-            data.getUser(i).addCourse(data.getCourse(1));
-            data.getUser(i).addCourse(data.getCourse(2));
-            data.getUser(i).addCourse(data.getCourse(3));
-        }
+
         data.addAdmin(0,"0","admin ja" , "mail@mail.com");
         data.saveData();
 
@@ -90,8 +75,9 @@ public class NotifireServer {
             else if (m.equals("joinCourse")) {// Join a Course
                 int userId = (int) sv.fromClient(); // #2 User ID
                 int courseId = (int) sv.fromClient();//#3 Course ID
-                data.getUser(userId).addCourse(data.getCourse(courseId));
-
+                if(data.getCourse(courseId) != null){
+                    data.getUser(userId).addCourse(data.getCourse(courseId));
+                }else{System.out.println("no course ID!");}
             } //---------------------------Admin--------------------------------------------------             
             else if (m.equals("addCourse")) {// Add New Courses
                 int id = (int) sv.fromClient();//#2 User courseID

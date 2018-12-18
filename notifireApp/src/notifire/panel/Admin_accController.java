@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import notifire.Admin;
+import notifire.ThisUser;
 
 /**
  * FXML Controller class
@@ -34,22 +36,10 @@ public class Admin_accController implements Initializable {
     @FXML private TextField pass; 
     @FXML private TextField email; 
     @FXML private TextField name; 
-    @FXML private ComboBox role; 
+    @FXML private ComboBox<String> role; 
     @FXML
     private void cancel() throws IOException{
          linkTo("admin_home");
-    }
-    @FXML
-    private void acc() throws IOException{
-         linkTo("admin_acc");
-    }
-    @FXML
-    private void cu() throws IOException{
-         linkTo("admin_cu");
-    }
-    @FXML
-    private void cr() throws IOException{
-         linkTo("admin_cr");
     }
     /**
      * Initializes the controller class.
@@ -58,8 +48,26 @@ public class Admin_accController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         role.getItems().addAll("Teacher","Student");
-        
-    }    
+        role.getSelectionModel().selectFirst();
+    } 
+        @FXML
+    private void OK() throws IOException, ClassNotFoundException {
+        if(id.getText().isEmpty()||pass.getText().isEmpty()||email.getText().isEmpty()||name.getText().isEmpty()){
+            return;
+        }
+        Admin a = (Admin) ThisUser.getUser();
+        String r = role.getSelectionModel().getSelectedItem();
+        int d;
+        try {
+            d = Integer.parseInt(id.getText());
+        } catch (NumberFormatException e) {
+            id.setText("");
+            return;
+        }
+        a.addUser(r,d, pass.getText(), name.getText(), email.getText());
+
+        linkTo("admin_home");
+    }
     private void linkTo(String s) throws IOException {
         Scene sc = ap.getScene();
         Parent root = FXMLLoader.load(getClass().getResource(s + ".fxml"));

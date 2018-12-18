@@ -16,6 +16,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import notifire.Client;
+import notifire.ThisUser;
 
 /**
  * FXML Controller class
@@ -38,8 +40,14 @@ public class PasschangeController implements Initializable {
     private TextArea textpasscon;
 
     @FXML
-    private void confirm() throws IOException, ClassNotFoundException {       
-            linkTo("profile");        
+    private void confirm() throws IOException, ClassNotFoundException {//changePassword
+        Client client = new Client(ThisUser.ip, 5000);
+        client.toServer("changePassword");
+        client.toServer(ThisUser.getId());
+        client.toServer(textpasscon.getText());
+        client.toServer(textpassnew.getText());
+        client.disconnect();
+        linkTo("profile");        
     }
     @FXML
     private void cancel() throws IOException, ClassNotFoundException {       

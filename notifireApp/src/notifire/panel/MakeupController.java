@@ -85,7 +85,10 @@ public class MakeupController implements Initializable {
         time.setText("");
         time.setPromptText("format error");
     }
-    
+    @FXML
+    private void cancel() throws IOException, ClassNotFoundException {       
+            linkTo("Home");        
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadData();

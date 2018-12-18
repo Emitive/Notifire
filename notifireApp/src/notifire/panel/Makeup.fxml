@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.MakeupController">
    <children>
-      <Button layoutX="900.0" layoutY="500.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="OK" />
+      <Button layoutX="819.0" layoutY="502.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="OK" />
       <Text fill="#ff3419" layoutX="50.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make Up" wrappingWidth="116.609375">
          <font>
             <Font size="24.0" />
@@ -29,5 +29,6 @@
             <Font size="28.0" />
          </font>
       </Text>
+      <Button fx:id="cancel" layoutX="903.0" layoutY="502.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Cancel" />
    </children>
 </AnchorPane>

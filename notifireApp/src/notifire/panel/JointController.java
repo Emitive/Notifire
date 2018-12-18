@@ -41,6 +41,7 @@ public class JointController implements Initializable {
         Teacher t = (Teacher)ThisUser.getUser();
         t.joinCourse(t.getId(),courseId);
     //    System.out.println(t.getId());
+         ThisUser.update(true);
          linkTo("Home");
     }
     /**

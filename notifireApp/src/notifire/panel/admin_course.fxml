@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.RadialGradient?>
@@ -8,16 +9,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.Admin_courseController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.Admin_courseController">
    <children>
-      <Text layoutX="75.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID :">
+      <Text layoutX="131.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
          <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <Text layoutX="75.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
-         <font>
-            <Font size="36.0" />
+            <Font size="18.0" />
          </font>
          <fill>
             <RadialGradient centerX="0.5" radius="0.5">
@@ -28,28 +24,45 @@
             </RadialGradient>
          </fill>
       </Text>
-      <TextField layoutX="145.0" layoutY="54.0" prefHeight="43.0" prefWidth="187.0" />
-      <TextField fx:id="name" layoutX="198.0" layoutY="122.0" prefHeight="43.0" prefWidth="295.0" />
-      <Text fill="WHITE" layoutX="71.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time :">
+      <TextField fx:id="name" layoutX="198.0" layoutY="110.0" prefHeight="15.0" prefWidth="272.0" />
+      <Text fill="WHITE" layoutX="131.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time :">
          <font>
-            <Font size="36.0" />
+            <Font size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="182.0" layoutY="205.0" prefHeight="43.0" prefWidth="113.0" />
-      <TextField layoutX="332.0" layoutY="205.0" prefHeight="43.0" prefWidth="113.0" />
-      <Text fill="#f5f3f3" layoutX="306.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+      <TextField fx:id="time" layoutX="185.0" layoutY="187.0" prefHeight="6.0" prefWidth="97.0" />
+      <Text fill="#f5f5f5" layoutX="132.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID :">
          <font>
-            <Font size="36.0" />
+            <Font size="18.0" />
          </font>
       </Text>
-      <Text fill="#f5f5f5" layoutX="75.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID :">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <TextField fx:id="id" layoutX="145.0" layoutY="54.0" prefHeight="43.0" prefWidth="187.0" />
-      <Button fx:id="sub" layoutX="449.0" layoutY="362.0" mnemonicParsing="false" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Submit" />
+      <TextField fx:id="id" layoutX="174.0" layoutY="70.0" prefHeight="24.0" prefWidth="197.0" />
+      <Button layoutX="449.0" layoutY="362.0" mnemonicParsing="false" onAction="#OK" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Submit" />
       <Button fx:id="can" layoutX="525.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Cancel" />
+      <DatePicker fx:id="dp" layoutX="227.0" layoutY="149.0" prefHeight="14.0" prefWidth="161.0" />
+      <Text fill="WHITE" layoutX="131.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="132.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curriculum ID:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="cid" layoutX="258.0" layoutY="304.0" prefHeight="25.0" prefWidth="178.0" />
+      <Text fill="WHITE" layoutX="131.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Period:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="period" layoutX="197.0" layoutY="226.0" prefHeight="6.0" prefWidth="97.0" />
+      <Text fill="WHITE" layoutX="132.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="amount" layoutX="210.0" layoutY="266.0" prefHeight="6.0" prefWidth="97.0" />
       
    </children>
 </AnchorPane>

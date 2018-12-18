@@ -38,8 +38,6 @@ public class ProfileController implements Initializable {
     @FXML
     private Label labelid;
     @FXML
-    private Label labelpass;
-    @FXML
     private Label labelname;
     @FXML
     private Label labelemail;
@@ -48,17 +46,17 @@ public class ProfileController implements Initializable {
     private void OK() throws IOException, ClassNotFoundException {       
             linkTo("Home");        
     }
-    @FXML
-    private void edit() throws IOException, ClassNotFoundException {       
-            linkTo("editprofile");        
-    }
+
     @FXML
     private void change() throws IOException, ClassNotFoundException {       
             linkTo("passchange");        
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        System.out.println("ID="+ThisUser.getId());
+        labelid.setText(labelid.getText()+ThisUser.getId());
+        labelname.setText(labelname.getText()+ThisUser.getUser().getName());
+        labelemail.setText(labelemail.getText()+ThisUser.getUser().getEmail());
     }
 
    

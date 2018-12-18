@@ -56,6 +56,7 @@ public class LoginController implements Initializable {
 
             client.disconnect();
             ThisUser.update(false);
+            ThisUser.setId(d);
             
             Stage stage = (Stage) id.getScene().getWindow();
             stage.setResizable(false);

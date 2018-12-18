@@ -6,15 +6,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.ProfileController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.ProfileController">
    <children>
-      <Button layoutX="751.0" layoutY="510.0" mnemonicParsing="false" onAction="#edit" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="edit " />
       <Text fill="#ff3419" layoutX="47.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile" wrappingWidth="122.609375">
          <font>
             <Font size="39.0" />
          </font>
       </Text>
-      <Text fill="#ff3419" layoutX="54.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :" wrappingWidth="81.609375">
+      <Text fill="#ff3419" layoutX="54.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :" wrappingWidth="81.609375">
          <font>
             <Font size="24.0" />
          </font>
@@ -24,12 +23,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="#ff3419" layoutX="50.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="116.609375">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text fill="#ff3419" layoutX="50.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :" wrappingWidth="71.609375">
+      <Text fill="#ff3419" layoutX="50.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :" wrappingWidth="71.609375">
          <font>
             <Font size="24.0" />
          </font>
@@ -39,22 +33,17 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="labelpass" layoutX="167.0" layoutY="162.0" prefHeight="35.0" prefWidth="271.0" textFill="#ff3419">
+      <Label fx:id="labelname" layoutX="155.0" layoutY="153.0" prefHeight="35.0" prefWidth="271.0" textFill="#ff3419">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label fx:id="labelname" layoutX="142.0" layoutY="228.0" prefHeight="35.0" prefWidth="271.0" textFill="#ff3419">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelemail" layoutX="129.0" layoutY="293.0" prefHeight="35.0" prefWidth="297.0" textFill="#ff3419">
+      <Label fx:id="labelemail" layoutX="130.0" layoutY="204.0" prefHeight="35.0" prefWidth="297.0" textFill="#ff3419">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Button layoutX="865.0" layoutY="510.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Back" />
-      <Label layoutX="456.0" layoutY="171.0" onMouseClicked="#change" text="Change password" textFill="#ff3419" />
+      <Label layoutX="53.0" layoutY="263.0" onMouseClicked="#change" text="Change password" textFill="#ff3419" />
    </children>
 </AnchorPane>

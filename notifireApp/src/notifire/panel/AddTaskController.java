@@ -74,7 +74,12 @@ public class AddTaskController implements Initializable {
         Calendar c = GregorianCalendar.from(dp.getValue().atStartOfDay(ZoneId.systemDefault()));
         System.out.println(c.getTime());
     }
-
+    
+    @FXML
+    private void cancel() throws IOException, ClassNotFoundException {       
+            linkTo("Home");        
+    }
+    
     private void loadData() {
         list.removeAll(list);
         HashMap<Integer, Course> map = ThisUser.getUser().getCourse();

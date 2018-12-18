@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.Admin_cuController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.Admin_cuController">
    <children>
       <Text fill="WHITE" layoutX="75.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID :">
          <font>
@@ -20,7 +20,7 @@
       </Text>
       <TextField fx:id="id" layoutX="145.0" layoutY="54.0" prefHeight="43.0" prefWidth="345.0" />
       <TextField fx:id="name" layoutX="195.0" layoutY="167.0" prefHeight="43.0" prefWidth="295.0" />
-      <Button fx:id="sub" layoutX="449.0" layoutY="362.0" mnemonicParsing="false" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Submit" />
+      <Button fx:id="sub" layoutX="449.0" layoutY="362.0" mnemonicParsing="false" onAction="#OK" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Submit" />
       <Button fx:id="cancel" layoutX="527.0" layoutY="362.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Cancel" />
    </children>
 </AnchorPane>

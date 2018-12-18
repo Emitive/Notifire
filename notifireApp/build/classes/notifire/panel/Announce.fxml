@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.AnnounceController">
+<AnchorPane id="AnchorPane" fx:id="ap" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #111111;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="notifire.panel.AnnounceController">
    <children>
-      <Button layoutX="900.0" layoutY="500.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="OK" textFill="#111111" />
+      <Button layoutX="829.0" layoutY="500.0" mnemonicParsing="false" onAction="#OK" prefHeight="25.0" prefWidth="52.0" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="OK" textFill="#111111" />
       <Text fill="#ff3419" layoutX="50.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Announce" wrappingWidth="116.609375">
          <font>
             <Font size="24.0" />
@@ -19,5 +19,6 @@
       <TextArea fx:id="text" layoutX="73.0" layoutY="191.0" prefHeight="297.0" prefWidth="815.0" />
       <TextField fx:id="head" layoutX="73.0" layoutY="147.0" prefHeight="25.0" prefWidth="216.0" />
       <ComboBox fx:id="sub" layoutX="73.0" layoutY="104.0" prefWidth="150.0" />
+      <Button fx:id="cancel" layoutX="899.0" layoutY="500.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #ff3419; -fx-background-radius: 30;" text="Cancel" />
    </children>
 </AnchorPane>
